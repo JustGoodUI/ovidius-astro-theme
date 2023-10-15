@@ -1,0 +1,72 @@
+---
+import { type CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+const { post } = Astro.props as { post: CollectionEntry<'blog'> };
+const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = post.data;
+---
+
+<article class="post-card mb-12 sm:mb-16">
+    <header class="post-card-header">
+        <div class="mb-2 text-sm uppercase tracking-wider text-slate-500">
+            {
+                isFeatured && (
+                    <>
+                        <span class="text-primary">Featured</span>
+                        {' / '}
+                    </>
+                )
+            }
+            <FormattedDate date={publishDate} />
+            {
+                updatedDate && (
+                    <>
+                        {' '}
+                        <span>
+                            (Updated on <FormattedDate date={updatedDate} />)
+                        </span>
+                    </>
+                )
+            }
+        </div>
+        <h2 class="text-3xl font-bold text-slate-900"><a href={`/blog/${post.slug}/`}>{title}</a></h2>
+    </header>
+    {
+        featureImage?.src && (
+            <figure class="post-card-thumbnail mt-6 mb-6 xl:mb-0">
+                <a href={`/blog/${post.slug}/`}>
+                    <img class="w-full rounded-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+                </a>
+            </figure>
+        )
+    }
+    {
+        excerpt && (
+            <div class="post-card-content mt-4">
+                <div class="prose prose-slate max-w-none sm:prose-lg">{excerpt}</div>
+            </div>
+        )
+    }
+</article>
+
+<style>
+    @media (min-width: 1280px) {
+        .post-card-header {
+            grid-area: header;
+        }
+        .post-card-content {
+            grid-area: content;
+        }
+        .post-card-thumbnail {
+            grid-area: thumbnail;
+        }
+        .post-card {
+            @apply grid gap-x-8;
+            grid-template-rows: min-content 1fr;
+            grid-template-columns: 1fr 768px 1fr;
+            grid-template-areas:
+                'thumbnail header'
+                'thumbnail content';
+        }
+    }
+</style>

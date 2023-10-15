@@ -1,0 +1,114 @@
+---
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { type Image } from '../../data/site-config';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import ReadNextPostPreview from '../../components/ReadNextPostPreview.astro';
+import { sortPostsByDateDesc } from '../../utils/post-utils';
+import Subscribe from '../../components/Subscribe.astro';
+
+export async function getStaticPaths() {
+    const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+    const postCount = posts.length;
+    return posts.map((post, index) => ({
+        params: { slug: post.slug },
+        props: {
+            post,
+            prevPost: index + 1 !== postCount ? posts[index + 1] : null,
+            nextPost: index !== 0 ? posts[index - 1] : null
+        }
+    }));
+}
+
+const { href } = Astro.url;
+const { post, prevPost, nextPost } = Astro.props as { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>; nextPost: CollectionEntry<'blog'> };
+const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured, seo } = post.data;
+const { Content } = await post.render();
+let socialImage: Image | undefined;
+if (featureImage?.src) {
+    socialImage = featureImage;
+}
+if (seo?.image?.src) {
+    socialImage = seo.image;
+}
+---
+
+<BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={socialImage} pageType="article">
+    <main class="grow px-4 py-12 sm:px-8 sm:py-16">
+        <article class="max-w-6xl mx-auto mb-12 sm:mb-16">
+            <header class="max-w-3xl mx-auto mb-6 sm:mb-8">
+                <div class="mb-3 text-sm uppercase tracking-wider text-slate-500">
+                    {
+                        isFeatured && (
+                            <>
+                                <span class="text-primary">Featured</span>
+                                {' / '}
+                            </>
+                        )
+                    }
+                    <FormattedDate date={publishDate} />
+                    {
+                        updatedDate && (
+                            <>
+                                {' '}
+                                <span>
+                                    (Updated on <FormattedDate date={updatedDate} />)
+                                </span>
+                            </>
+                        )
+                    }
+                </div>
+                <h1 class="text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl">{title}</h1>
+            </header>
+            {
+                featureImage?.src && (
+                    <figure class="mx-auto my-6 sm:my-8 lg:my-12">
+                        <img class="w-full rounded-lg" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+                        {featureImage.caption && <figcaption class="mt-1.5 text-xs sm:text-sm">{featureImage.caption}</figcaption>}
+                    </figure>
+                )
+            }
+            <div class="max-w-3xl mx-auto">
+                <div class="prose prose-slate sm:prose-lg max-w-none">
+                    <Content />
+                </div>
+                <div class="mt-8 flex flex-wrap gap-x-3 text-sm sm:mt-12 sm:text-base">
+                    <span class="font-semibold">Share:</span>
+                    <a
+                        class="text-primary transition duration-300 hover:text-slate-700"
+                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(href)}&text=${encodeURIComponent(title)}`}
+                        target="_blank"
+                        rel="noopener noreferer"
+                        aria-label="Share on X">X/Twitter</a
+                    >
+                    <a
+                        class="text-primary transition duration-300 hover:text-slate-700"
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(href)}`}
+                        target="_blank"
+                        rel="noopener noreferer"
+                        aria-label="Share on Facebook">Facebook</a
+                    >
+                    <a
+                        class="text-primary transition duration-300 hover:text-slate-700"
+                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(href)}&summary=${encodeURIComponent(title)}`}
+                        target="_blank"
+                        rel="noopener noreferer"
+                        aria-label="Share on LinkedIn">LinkedIn</a
+                    >
+                </div>
+            </div>
+        </article>
+        {
+            (prevPost || nextPost) && (
+                <div class="max-w-3xl mx-auto mb-12 sm:mb-16">
+                    <h2 class="mb-8 text-sm uppercase tracking-wider text-slate-900 after:content-[''] after:block after:w-16 after:h-px after:bg-primary after:mt-4 sm:mb-12">
+                        Read Next
+                    </h2>
+                    {nextPost && <ReadNextPostPreview post={nextPost} />}
+                    {prevPost && <ReadNextPostPreview post={prevPost} />}
+                </div>
+            )
+        }
+        <Subscribe class="my-12 sm:my-16" />
+    </main>
+</BaseLayout>

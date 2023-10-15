@@ -1,0 +1,31 @@
+---
+import ArrowLeft from '../icons/ArrowLeft.astro';
+import ArrowRight from '../icons/ArrowRight.astro';
+import CodePen from '../icons/CodePen.astro';
+import Dev from '../icons/Dev.astro';
+import Facebook from '../icons/Facebook.astro';
+import GitHub from '../icons/GitHub.astro';
+import Instagram from '../icons/Instagram.astro';
+import LinkedIn from '../icons/LinkedIn.astro';
+import Medium from '../icons/Medium.astro';
+import XTwitter from '../icons/XTwitter.astro';
+
+const iconMap: { [key: string]: any } = {
+    'arrow-left': ArrowLeft,
+    'arrow-right': ArrowRight,
+    codepen: CodePen,
+    dev: Dev,
+    facebook: Facebook,
+    github: GitHub,
+    instagram: Instagram,
+    linkedin: LinkedIn,
+    medium: Medium,
+    'x-twitter': XTwitter
+};
+
+const { icon, class: className } = Astro.props;
+
+const IconComponent = icon ? iconMap[icon] : null;
+---
+
+{IconComponent && <IconComponent class={className} />}

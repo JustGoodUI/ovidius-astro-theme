@@ -1,0 +1,33 @@
+---
+import siteConfig from '../data/site-config';
+import SocialLink from './SocialLink.astro';
+
+const socialLinks = siteConfig.socialLinks || [];
+const secondaryNavLinks = siteConfig.secondaryNavLinks || [];
+---
+
+<footer class="px-4 py-8 sm:px-8 sm:py-12">
+    {
+        secondaryNavLinks.length > 0 && (
+            <div class="w-full max-w-3xl mx-auto mb-6 flex flex-wrap gap-x-6 gap-y-1 justify-center">
+                {secondaryNavLinks.map((link) => (
+                    <a class="text-slate-700 transition hover:text-slate-500" href={link.href}>
+                        {link.text}
+                    </a>
+                ))}
+            </div>
+        )
+    }
+    {
+        socialLinks.length > 0 && (
+            <div class="w-full max-w-3xl mx-auto mb-6 flex flex-wrap gap-x-4 gap-y-3 justify-center">
+                {socialLinks.map((link) => (
+                    <SocialLink {...link} class="bg-slate-50 text-slate-700 hover:bg-primary hover:text-white hover:shadow-button" />
+                ))}
+            </div>
+        )
+    }
+    <p class="text-center text-xs uppercase tracking-wider text-slate-700">
+        &copy; {new Date().getFullYear()}&nbsp;<a class="text-primary underline hover:no-underline" href="/">{siteConfig.title}</a>. All rights reserved.
+    </p>
+</footer>

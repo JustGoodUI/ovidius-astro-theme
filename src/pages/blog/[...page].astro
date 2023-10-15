@@ -1,0 +1,56 @@
+---
+import type { GetStaticPathsOptions, Page } from 'astro';
+import { type CollectionEntry, getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Icon from '../../components/Icon.astro';
+import PostPreview from '../../components/PostPreview.astro';
+import siteConfig from '../../data/site-config.ts';
+import { sortPostsByDateDesc } from '../../utils/post-utils';
+import Subscribe from '../../components/Subscribe.astro';
+
+export async function getStaticPaths({ paginate }: GetStaticPathsOptions) {
+    const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
+    return paginate(posts, { pageSize: siteConfig.postsPerPage || 5 });
+}
+
+const { page } = Astro.props as { page: Page<CollectionEntry<'blog'>> };
+const blog = page.data;
+---
+
+<BaseLayout title="Ovidius Blog" description="Get all the latest news from Ovidius" image={{ src: '/ovidius-preview.jpg', alt: 'The preview of the site' }}>
+    <main class="grow px-4 py-12 sm:px-8 sm:py-16">
+        <div class="max-w-3xl xl:max-w-6xl mx-auto">
+            {blog.map((post) => <PostPreview post={post} />)}
+        </div>
+        <nav aria-label="Pagination" class="max-w-3xl mx-auto my-12 pt-12 border-t border-slate-200 sm:my-16 sm:pt-16">
+            <div class="relative text-center px-12">
+                {
+                    page.url.prev && (
+                        <a
+                            class="w-10 h-10 absolute left-0 top-1/2 -translate-y-1/2 inline-flex items-center justify-center text-lg bg-slate-50 text-slate-700 rounded-full transition duration-300 hover:bg-primary hover:text-white hover:shadow-button"
+                            href={page.url.prev}
+                            rel="prefetch"
+                            aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`}
+                        >
+                            <Icon icon="arrow-left" class="w-5 h-5 fill-current" />
+                        </a>
+                    )
+                }
+                <span class="text-slate-500 text-sm uppercase tracking-wider" aria-current="page">Page {page.currentPage} of {page.lastPage}</span>
+                {
+                    page.url.next && (
+                        <a
+                            class="w-10 h-10 absolute right-0 top-1/2 -translate-y-1/2 inline-flex items-center justify-center text-lg bg-slate-50 text-slate-700 rounded-full transition duration-300 hover:bg-primary hover:text-white hover:shadow-button"
+                            href={page.url.next}
+                            rel="prefetch"
+                            aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`}
+                        >
+                            <Icon icon="arrow-right" class="w-5 h-5 fill-current" />
+                        </a>
+                    )
+                }
+            </div>
+        </nav>
+        <Subscribe class="my-12 sm:my-16" />
+    </main>
+</BaseLayout>

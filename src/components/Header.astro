@@ -1,0 +1,133 @@
+---
+import HeaderNavLink from './HeaderNavLink.astro';
+import siteConfig from '../data/site-config.ts';
+
+const primaryNavLinks = siteConfig.primaryNavLinks || [];
+
+const { class: className } = Astro.props;
+---
+
+<header class:list={['px-4 py-4 flex gap-6 items-center justify-between sm:px-8 sm:py-6', className]}>
+    {
+        siteConfig.logo && siteConfig.logo?.src ? (
+            <a href="/">
+                <img class="max-h-12" src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} />
+            </a>
+        ) : (
+            <a class="text-xl font-bold sm:text-2xl" href="/">
+                {siteConfig.title}
+            </a>
+        )
+    }
+    {
+        primaryNavLinks.length > 0 && (
+            <nav class="relative">
+                <button
+                    class="menu-toggle w-10 h-10 inline-flex items-center justify-center bg-primary text-white rounded-full relative z-20 transition-shadow duration-300 hover:shadow-button"
+                    aria-label="Open Menu"
+                    aria-expanded="false"
+                    aria-controls="menu-items"
+                >
+                    <span class="menu-toggle-icon w-1 h-1 relative bg-white rounded-full" />
+                </button>
+                <ul id="menu-items" class="menu absolute -top-3 -right-3 px-8 pt-16 pb-10 bg-white/75 border border-white/40 z-10 sm:px-12 sm:pt-20 sm:pb-16">
+                    {primaryNavLinks.map((link) => (
+                        <li class="mb-1 border-b border-slate-200/70">
+                            <HeaderNavLink
+                                class="block pr-6 py-1 text-lg text-slate-700 font-bold sm:text-xl relative transition duration-300 hover:text-slate-500"
+                                href={link.href}
+                            >
+                                {link.text}
+                            </HeaderNavLink>
+                        </li>
+                    ))}
+                </ul>
+            </nav>
+        )
+    }
+</header>
+
+<style>
+    .menu {
+        width: calc(100vw - 0.5rem);
+        max-width: 18.75rem;
+        border-radius: 26px;
+        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(5px);
+        opacity: 0;
+        transform: scale(0.6);
+        transform-origin: top right;
+        transition:
+            transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) 0.3s,
+            opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.25s,
+            visibility 0s 0.5s;
+        visibility: hidden;
+    }
+    .menu.is-visible {
+        opacity: 1;
+        transform: scale(1);
+        transition:
+            transform 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.25s,
+            opacity 0.15s 0.15s,
+            visibility 0s 0.25s;
+        visibility: visible;
+    }
+    .menu-toggle-icon {
+        transition:
+            height 0s 0.25s,
+            width 0s 0.25s;
+    }
+    .menu-toggle-icon.is-active {
+        height: 3px;
+        width: 3px;
+    }
+    .menu-toggle-icon:before,
+    .menu-toggle-icon:after {
+        @apply w-1 h-1 absolute left-1/2 top-1/2 bg-white rounded-full -translate-x-1/2 -translate-y-1/2;
+        content: '';
+        transition:
+            width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+            height 0s 0.25s,
+            transform 0s 0.25s,
+            margin 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+    }
+    .menu-toggle-icon:before {
+        @apply -ml-2;
+    }
+    .menu-toggle-icon:after {
+        @apply ml-2;
+    }
+    .menu-toggle-icon.is-active:before,
+    .menu-toggle-icon.is-active:after {
+        @apply w-5 ml-0 rounded-md;
+        height: 3px;
+        transition:
+            margin 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+            height 0s 0.25s,
+            transform 0s 0.25s,
+            width 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
+    }
+    .menu-toggle-icon.is-active:before {
+        @apply rotate-45;
+    }
+    .menu-toggle-icon.is-active:after {
+        @apply -rotate-45;
+    }
+</style>
+
+<script>
+    function menuToggle() {
+        const menu = document.querySelector('.menu');
+        const menuToggleBtn = document.querySelector('.menu-toggle');
+        const menuToggleIcon = document.querySelector('.menu-toggle-icon');
+        menuToggleBtn?.addEventListener('click', () => {
+            const isMenuExpanded = menuToggleBtn.getAttribute('aria-expanded') === 'true';
+            menuToggleBtn.setAttribute('aria-expanded', isMenuExpanded ? 'false' : 'true');
+            menuToggleBtn.setAttribute('aria-label', isMenuExpanded ? 'Open Menu' : 'Close Menu');
+            menuToggleIcon?.classList.toggle('is-active');
+            menu?.classList.toggle('is-visible');
+        });
+    }
+    menuToggle();
+    document.addEventListener('astro:after-swap', menuToggle);
+</script>

@@ -1,0 +1,49 @@
+---
+import siteConfig from '../data/site-config.ts';
+
+const subscribe = siteConfig.subscribe;
+
+const { class: className } = Astro.props;
+---
+
+{
+    (subscribe?.title || subscribe?.text || subscribe?.formUrl) && (
+        <section class={className}>
+            <div class="w-full max-w-3xl mx-auto px-4 py-8 flex flex-col items-center bg-slate-50 border border-slate-200 rounded-md text-center sm:px-12 sm:py-14">
+                {subscribe?.title && <h2 class="max-w-xl text-2xl font-bold text-slate-900 sm:text-3xl">{subscribe?.title}</h2>}
+                {subscribe?.text && <p class:list={['max-w-xl text-slate-700 sm:text-lg', { 'mt-4': subscribe?.title }]}>{subscribe?.text}</p>}
+                {subscribe?.formUrl && (
+                    <form
+                        action={subscribe?.formUrl}
+                        method="post"
+                        id="mc-embedded-subscribe-form"
+                        name="mc-embedded-subscribe-form"
+                        class:list={['w-full max-w-xl flex flex-col gap-2.5 sm:flex-row', { 'mt-7': subscribe?.title || subscribe?.text }]}
+                        target="_blank"
+                    >
+                        <label for="mce-EMAIL" class="sr-only">
+                            Email Address
+                        </label>
+                        <input
+                            type="email"
+                            name="EMAIL"
+                            id="mce-EMAIL"
+                            class="w-full h-11 px-5 py-2 text-slate-700 bg-white border border-slate-200 rounded-full placeholder:text-slate-500 focus:outline-none"
+                            required=""
+                            value=""
+                            placeholder="Your email"
+                        />
+                        <button
+                            type="submit"
+                            name="subscribe"
+                            id="mc-embedded-subscribe"
+                            class="w-full px-8 py-2.5 inline-flex gap-1.5 justify-center items-center font-semibold bg-primary text-white rounded-full transition duration-300 hover:shadow-button sm:w-auto"
+                        >
+                            Subscribe
+                        </button>
+                    </form>
+                )}
+            </div>
+        </section>
+    )
+}

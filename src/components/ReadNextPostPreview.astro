@@ -1,0 +1,37 @@
+---
+import { type CollectionEntry } from 'astro:content';
+import FormattedDate from './FormattedDate.astro';
+
+const { post } = Astro.props as { post: CollectionEntry<'blog'> };
+const { title, publishDate, updatedDate, featureImage } = post.data;
+---
+
+<article class="mb-12 flex flex-col gap-x-8 gap-y-6 sm:flex-row">
+    <header class="grow">
+        <div class="mb-2 text-sm uppercase tracking-wider text-slate-500">
+            <FormattedDate date={publishDate} />
+            {
+                updatedDate && (
+                    <>
+                        {' '}
+                        <span>
+                            (Updated on <FormattedDate date={updatedDate} />)
+                        </span>
+                    </>
+                )
+            }
+        </div>
+        <h3 class="text-2xl font-bold text-slate-900">
+            <a href={`/blog/${post.slug}/`}>{title}</a>
+        </h3>
+    </header>
+    {
+        featureImage?.src && (
+            <figure class="shrink-0 sm:w-40">
+                <a href={`/blog/${post.slug}/`}>
+                    <img class="w-full rounded-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+                </a>
+            </figure>
+        )
+    }
+</article>
