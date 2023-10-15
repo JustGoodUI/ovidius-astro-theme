@@ -70,3 +70,7 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 
 - Demo content generate with [Chat GPT](https://chat.openai.com/)
 - Images for demo content from [Unsplash](https://unsplash.com/)
+
+## License
+
+Licensed under the [GPL-3.0](https://github.com/JustGoodUI/ovidius-astro-theme/blob/main/LICENSE) license.
