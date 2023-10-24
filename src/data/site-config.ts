@@ -79,12 +79,17 @@ const siteConfig: SiteConfig = {
         {
             text: 'Contact',
             href: '/contact'
+        },
+        {
+            text: 'Download Theme',
+            href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
         }
+        Download
     ],
     socialLinks: [
         {
             text: 'Go to GitHub repo',
-            href: 'https://github.com/',
+            href: 'https://github.com/JustGoodUI/ovidius-astro-theme',
             icon: 'github'
         },
         {
