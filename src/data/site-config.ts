@@ -84,7 +84,6 @@ const siteConfig: SiteConfig = {
             text: 'Download Theme',
             href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
         }
-        Download
     ],
     socialLinks: [
         {
