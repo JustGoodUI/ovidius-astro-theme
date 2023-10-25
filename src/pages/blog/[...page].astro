@@ -19,6 +19,7 @@ const blog = page.data;
 
 <BaseLayout title="Ovidius Blog" description="Get all the latest news from Ovidius" image={{ src: '/ovidius-preview.jpg', alt: 'The preview of the site' }}>
     <main class="grow px-4 py-12 sm:px-8 sm:py-16">
+        <h1 class="sr-only">Blog</h1>
         <div class="max-w-3xl xl:max-w-6xl mx-auto">
             {blog.map((post) => <PostPreview post={post} />)}
         </div>
