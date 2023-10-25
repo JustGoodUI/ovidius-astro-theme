@@ -33,7 +33,6 @@ const blog = defineCollection({
 const pages = defineCollection({
     schema: z.object({
         title: z.string(),
-        showTitle: z.boolean().default(true),
         featureImage: z
             .object({
                 src: z.string(),

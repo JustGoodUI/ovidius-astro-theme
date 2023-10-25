@@ -65,6 +65,10 @@ const siteConfig: SiteConfig = {
         {
             text: 'Contact',
             href: '/contact'
+        },
+        {
+            text: 'Download Theme',
+            href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
         }
     ],
     secondaryNavLinks: [
@@ -98,7 +102,7 @@ const siteConfig: SiteConfig = {
         },
         {
             text: 'Follow on X',
-            href: 'https://twitter.com/',
+            href: 'https://twitter.com/justgoodui',
             icon: 'x-twitter'
         }
     ],
