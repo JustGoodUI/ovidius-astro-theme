@@ -43,7 +43,7 @@ const siteConfig: SiteConfig = {
         src: '/logo.svg',
         alt: 'Ovidius logo'
     },
-    title: 'Ovidius',
+    title: 'Miss Kreyn',
     description: 'Astro.js and Tailwind CSS theme for blogging by justgoodui.com',
     image: {
         src: '/ovidius-preview.jpg',
@@ -108,13 +108,13 @@ const siteConfig: SiteConfig = {
     ],
     hero: {
         title: 'Hi there!',
-        text: "My name is Justin Case. I'm a freelance front-end developer, author and speaker based in Austin, TX. It's nice to meet you.",
+        text: "My name is Kirstin Kleyn. I code, I craft, and I get wasted on weekends.",
         avatar: {
             src: '/avatar.jpg',
             alt: 'Justin Case'
         },
         backgroundImage: {
-            src: '/hero.webp'
+            src: '/hero.jpg'
         }
     },
     subscribe: {
