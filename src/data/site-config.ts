@@ -9,7 +9,7 @@ export type Link = {
 };
 
 export type SocialLink = Link & {
-    icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter';
+    icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'youtube' | 'linkedin' | 'medium' | 'x-twitter';
 };
 
 export type Hero = {
@@ -44,7 +44,7 @@ const siteConfig: SiteConfig = {
         alt: 'Ovidius logo'
     },
     title: 'Miss Kreyn',
-    description: 'Astro.js and Tailwind CSS theme for blogging by justgoodui.com',
+    description: 'Get better with me',
     image: {
         src: '/ovidius-preview.jpg',
         alt: 'Ovidius - Astro.js and Tailwind CSS theme'
@@ -66,10 +66,10 @@ const siteConfig: SiteConfig = {
             text: 'Contact',
             href: '/contact'
         },
-        {
-            text: 'Download Theme',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
-        }
+        // {
+        //     text: 'Download Theme',
+        //     href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
+        // }
     ],
     secondaryNavLinks: [
         {
@@ -84,43 +84,48 @@ const siteConfig: SiteConfig = {
             text: 'Contact',
             href: '/contact'
         },
-        {
-            text: 'Download Theme',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
-        }
+        // {
+        //     text: 'Download Theme',
+        //     href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
+        // }
     ],
     socialLinks: [
-        {
-            text: 'Go to GitHub repo',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme',
-            icon: 'github'
-        },
+        // {
+        //     text: 'Go to GitHub repo',
+        //     href: 'https://github.com/JustGoodUI/ovidius-astro-theme',
+        //     icon: 'github'
+        // },
         {
             text: 'Follow on Instagram',
             href: 'https://instagram.com/',
             icon: 'instagram'
         },
         {
-            text: 'Follow on X',
-            href: 'https://twitter.com/justgoodui',
-            icon: 'x-twitter'
-        }
+            text: 'Follow on YouTube',
+            href: 'https://youtube.com/',
+            icon: 'youtube'
+        },
+        // {
+        //     text: 'Follow on X',
+        //     href: 'https://twitter.com/justgoodui',
+        //     icon: 'x-twitter'
+        // }
     ],
     hero: {
         title: 'Hi there!',
         text: "My name is Kirstin Kleyn. I code, I craft, and I get wasted on weekends.",
         avatar: {
             src: '/avatar.jpg',
-            alt: 'Justin Case'
+            alt: 'Kirstin Kleyn'
         },
         backgroundImage: {
             src: '/hero.jpg'
         }
     },
     subscribe: {
-        title: 'Subscribe to Ovidius Newsletter',
-        text: 'One update per week. All the latest news directly in your inbox.',
-        formUrl: 'https://justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117&amp;f_id=005c48e2f0'
+        title: 'Subscribe for new content',
+        text: 'One in a while, I may let you know about some of my new posts.',
+        formUrl: '#'
     },
     postsPerPage: 5
 };

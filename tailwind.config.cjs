@@ -12,7 +12,9 @@ module.exports = {
                 primary: 'rgb(var(--color-primary) / <alpha-value>)'
             },
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans]
+                sans: ['Quicksand', ...defaultTheme.fontFamily.sans],
+                serif: ['Quando', ...defaultTheme.fontFamily.serif],
+                display: ['Arima', 'ui-sans-serif']
             },
             typography: (theme) => ({
                 DEFAULT: {

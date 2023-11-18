@@ -6,4 +6,9 @@
     :root {
         --color-primary: 2 147 181; /* #0293B5 */
     }
+    h1,
+    h2 {
+        font-family: 'Arima', system-ui;
+        /* font-family: 'Arima', system-ui; */
+    }
 }
