@@ -7,6 +7,7 @@ Ovidius is a single-author blog theme for Astro.js. Featuring a minimal, slick, 
 ## Theme Features:
 
 - ✅ Featured post support
+- ✅ Subscribe form
 - ✅ Tailwind CSS
 - ✅ SEO-friendly with canonical URLs and OpenGraph data
 - ✅ Sitemap support
