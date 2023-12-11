@@ -73,5 +73,5 @@ module.exports = {
             })
         }
     },
-    plugins: [require('@tailwindcss/typography', { applyBaseStyles: false })]
+    plugins: [require('@tailwindcss/typography')]
 };
