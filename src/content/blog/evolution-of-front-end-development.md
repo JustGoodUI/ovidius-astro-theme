@@ -1,7 +1,7 @@
 ---
 title: 'The Evolution of Front-End Development: A Journey Through Time'
 excerpt: Choosing the right framework for your web project is a critical decision that can significantly impact the development process and the success of your project. With so many options available, it's essential to consider various factors before making a choice.
-publishDate: 'Oct 12 2023'
+publishDate: 'Jan 12 2024'
 featureImage:
   src: '/post-9.webp'
   alt: Blue shapes
