@@ -4,6 +4,10 @@ Ovidius is a single-author blog theme for Astro.js. Featuring a minimal, slick, 
 
 ![Ovidius Astro.js Theme](public/ovidius-preview.jpg)
 
+[![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JustGoodUI/ovidius-astro-theme)
+
+If you click this☝️ button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
+
 ## Theme Features:
 
 - ✅ Featured post support
