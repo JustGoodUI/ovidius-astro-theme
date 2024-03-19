@@ -43,7 +43,7 @@ const siteConfig: SiteConfig = {
         src: '/logo.svg',
         alt: 'Ovidius logo'
     },
-    title: 'Ovidius',
+    title: 'tkhwang.me',
     description: 'Astro.js and Tailwind CSS theme for blogging by justgoodui.com',
     image: {
         src: '/ovidius-preview.jpg',
@@ -65,10 +65,6 @@ const siteConfig: SiteConfig = {
         {
             text: 'Contact',
             href: '/contact'
-        },
-        {
-            text: 'Download Theme',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
         }
     ],
     secondaryNavLinks: [
@@ -83,34 +79,25 @@ const siteConfig: SiteConfig = {
         {
             text: 'Contact',
             href: '/contact'
-        },
-        {
-            text: 'Download Theme',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme'
         }
     ],
     socialLinks: [
         {
             text: 'Go to GitHub repo',
-            href: 'https://github.com/JustGoodUI/ovidius-astro-theme',
+            href: 'https://github.com/tkhwang',
             icon: 'github'
         },
         {
-            text: 'Follow on Instagram',
-            href: 'https://instagram.com/',
-            icon: 'instagram'
-        },
-        {
             text: 'Follow on X',
-            href: 'https://twitter.com/justgoodui',
+            href: 'https://twitter.com/tkhwang',
             icon: 'x-twitter'
         }
     ],
     hero: {
-        title: 'Hi there!',
-        text: "My name is Justin Case. I'm a freelance front-end developer, author and speaker based in Austin, TX. It's nice to meet you.",
+        title: 'tkhwang.me',
+        text: 'This 🕸️ is my little 🤔 thoughts  and 💻 journey  into software development.',
         avatar: {
-            src: '/avatar.jpg',
+            src: 'https://en.gravatar.com/userimage/2531295/7d63de5df4ed2769fb960b82211d3dd3.jpg?size=200',
             alt: 'Justin Case'
         },
         backgroundImage: {
@@ -122,7 +109,7 @@ const siteConfig: SiteConfig = {
         text: 'One update per week. All the latest news directly in your inbox.',
         formUrl: 'https://justgoodthemes.us3.list-manage.com/subscribe/post?u=78f1bab16028354caeb23aecd&amp;id=4a7330d117&amp;f_id=005c48e2f0'
     },
-    postsPerPage: 5
+    postsPerPage: 10
 };
 
 export default siteConfig;
