@@ -23,12 +23,12 @@ const { title, publishDate, updatedDate, featureImage, excerpt } = post.data;
                 )
             }
         </div>
-        <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl"><a href={`/blog/${post.slug}/`}>{title}</a></h2>
+        <h2 class="text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl"><a href={`/blog/${post.id}/`}>{title}</a></h2>
     </header>
     {
         featureImage?.src && (
             <figure class="max-w-6xl mx-auto my-6 sm:my-8">
-                <a href={`/blog/${post.slug}/`}>
+                <a href={`/blog/${post.id}/`}>
                     <img class="w-full rounded-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
                 </a>
             </figure>
@@ -44,7 +44,7 @@ const { title, publishDate, updatedDate, featureImage, excerpt } = post.data;
     <div class="max-w-3xl mx-auto mt-8">
         <a
             class="inline-flex justify-center items-center gap-1.5 bg-primary text-white px-8 py-2.5 font-semibold rounded-full transition duration-300 hover:shadow-button"
-            href={`/blog/${post.slug}/`}
+            href={`/blog/${post.id}/`}
         >
             Continue Reading
         </a>

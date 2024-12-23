@@ -29,12 +29,12 @@ const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = p
                 )
             }
         </div>
-        <h2 class="text-3xl font-bold text-slate-900"><a href={`/blog/${post.slug}/`}>{title}</a></h2>
+        <h2 class="text-3xl font-bold text-slate-900"><a href={`/blog/${post.id}/`}>{title}</a></h2>
     </header>
     {
         featureImage?.src && (
             <figure class="post-card-thumbnail mt-6 mb-6 xl:mb-0">
-                <a href={`/blog/${post.slug}/`}>
+                <a href={`/blog/${post.id}/`}>
                     <img class="w-full rounded-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
                 </a>
             </figure>

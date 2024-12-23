@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import { type Image } from '../../data/site-config';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
@@ -11,7 +11,7 @@ export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
     const postCount = posts.length;
     return posts.map((post, index) => ({
-        params: { slug: post.slug },
+        params: { id: post.id },
         props: {
             post,
             prevPost: index + 1 !== postCount ? posts[index + 1] : null,
@@ -23,7 +23,7 @@ export async function getStaticPaths() {
 const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props as { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>; nextPost: CollectionEntry<'blog'> };
 const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured, seo } = post.data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 let socialImage: Image | undefined;
 if (featureImage?.src) {
     socialImage = featureImage;
