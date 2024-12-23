@@ -3,6 +3,9 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 module.exports = {
     content: ['./src/**/*.{astro,html,js,jsx,md,mdx,ts,tsx}'],
     theme: {
+        fontFamily: {
+            sans: ['Figtree Variable', 'Georgia', ...defaultTheme.fontFamily.sans]
+        },
         extend: {
             boxShadow: {
                 button: '0 0 1px 6px rgb(var(--color-primary) / 0.175)',
@@ -10,9 +13,6 @@ module.exports = {
             },
             colors: {
                 primary: 'rgb(var(--color-primary) / <alpha-value>)'
-            },
-            fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans]
             },
             typography: (theme) => ({
                 DEFAULT: {

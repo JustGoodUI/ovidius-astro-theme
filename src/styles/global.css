@@ -1,3 +1,6 @@
+@import '@fontsource-variable/figtree';
+@import '@fontsource-variable/figtree/wght-italic.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

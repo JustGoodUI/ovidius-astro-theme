@@ -1,7 +1,7 @@
 {
     "name": "ovidius-astro-theme",
     "type": "module",
-    "version": "0.0.2",
+    "version": "0.1.0",
     "scripts": {
         "dev": "astro dev",
         "start": "astro dev",
@@ -14,6 +14,7 @@
         "@astrojs/rss": "^4.0.10",
         "@astrojs/sitemap": "^3.2.1",
         "@astrojs/tailwind": "^5.1.4",
+        "@fontsource-variable/figtree": "^5.1.1",
         "astro": "^5.1.1",
         "tailwindcss": "^3.4.17"
     },
