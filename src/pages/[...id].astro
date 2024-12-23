@@ -1,5 +1,5 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { type CollectionEntry, getCollection, render } from 'astro:content';
 import { type Image } from '../data/site-config';
 import BaseLayout from '../layouts/BaseLayout.astro';
 
@@ -7,7 +7,7 @@ export async function getStaticPaths() {
     const pages = await getCollection('pages');
     return pages.map((page) => {
         return {
-            params: { slug: page.slug },
+            params: { id: page.id },
             props: { page }
         };
     });
@@ -15,7 +15,7 @@ export async function getStaticPaths() {
 
 const { page } = Astro.props as { page: CollectionEntry<'pages'> };
 const { title, featureImage, seo } = page.data;
-const { Content } = await page.render();
+const { Content } = await render(page);
 let socialImage: Image | undefined;
 if (featureImage?.src) {
     socialImage = featureImage;

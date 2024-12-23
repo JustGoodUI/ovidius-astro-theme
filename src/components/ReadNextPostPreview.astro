@@ -22,13 +22,13 @@ const { title, publishDate, updatedDate, featureImage } = post.data;
             }
         </div>
         <h3 class="text-2xl font-bold text-slate-900">
-            <a href={`/blog/${post.slug}/`}>{title}</a>
+            <a href={`/blog/${post.id}/`}>{title}</a>
         </h3>
     </header>
     {
         featureImage?.src && (
             <figure class="shrink-0 sm:w-40">
-                <a href={`/blog/${post.slug}/`}>
+                <a href={`/blog/${post.id}/`}>
                     <img class="w-full rounded-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
                 </a>
             </figure>
