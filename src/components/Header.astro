@@ -90,7 +90,8 @@ const { class: className } = Astro.props;
         transition:
             width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
             height 0s 0.25s,
-            transform 0s 0.25s,
+            translate 0s 0.25s,
+            rotate 0s 0.25s,
             margin 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
     }
     .menu-toggle-icon:before {
@@ -106,7 +107,8 @@ const { class: className } = Astro.props;
         transition:
             margin 0.25s cubic-bezier(0.4, 0, 0.2, 1),
             height 0s 0.25s,
-            transform 0s 0.25s,
+            translate 0s 0.25s,
+            rotate 0s 0.25s,
             width 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
     }
     .menu-toggle-icon.is-active:before {
