@@ -1,12 +1,31 @@
-@import '@fontsource-variable/figtree';
-@import '@fontsource-variable/figtree/wght-italic.css';
+@import '@fontsource-variable/figtree' layer(base);
+@import '@fontsource-variable/figtree/wght-italic.css' layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
 
-@layer base {
-    :root {
-        --color-primary: 2 147 181; /* #0293B5 */
+@theme {
+    --font-sans: 'Figtree Variable', sans-serif;
+    --color-primary: #0293b5;
+    --shadow-avatar: 0 0 1px 11px --alpha(var(--color-primary) / 15%), 0 0 1px 22px --alpha(var(--color-primary) / 10%);
+    --shadow-button: 0 0 1px 6px --alpha(var(--color-primary) / 17.5%);
+}
+
+@layer utilities {
+    .prose a {
+        @apply text-primary underline decoration-1 underline-offset-2 hover:no-underline;
+    }
+    .prose blockquote {
+        @apply relative font-semibold not-italic border-none pl-0 text-[1.375em] leading-snug text-center sm:text-[1.66667em] lg:-mx-24 xl:-mx-40;
+    }
+    .prose blockquote:before {
+        @apply block w-15 h-0.75 mx-auto bg-primary;
+        content: '';
+        margin-bottom: 1.375em;
+    }
+    .prose blockquote:after {
+        @apply block w-7.5 h-0.75 mx-auto bg-primary;
+        content: '';
+        margin-top: 1.375em;
     }
 }
