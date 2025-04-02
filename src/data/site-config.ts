@@ -9,7 +9,7 @@ export type Link = {
 };
 
 export type SocialLink = Link & {
-    icon: 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter';
+    icon: 'bluesky' | 'codepen' | 'dev' | 'facebook' | 'github' | 'instagram' | 'linkedin' | 'medium' | 'x-twitter';
 };
 
 export type Hero = {
@@ -101,9 +101,9 @@ const siteConfig: SiteConfig = {
             icon: 'instagram'
         },
         {
-            text: 'Follow on X',
-            href: 'https://twitter.com/justgoodui',
-            icon: 'x-twitter'
+            text: 'Follow on Bluesky',
+            href: 'https://bsky.app/profile/justgoodui.com',
+            icon: 'bluesky'
         }
     ],
     hero: {

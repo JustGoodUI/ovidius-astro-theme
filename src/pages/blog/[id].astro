@@ -1,11 +1,11 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import { type Image } from '../../data/site-config';
-import BaseLayout from '../../layouts/BaseLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import ReadNextPostPreview from '../../components/ReadNextPostPreview.astro';
-import { sortPostsByDateDesc } from '../../utils/post-utils';
 import Subscribe from '../../components/Subscribe.astro';
+import { type Image } from '../../data/site-config';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { sortPostsByDateDesc } from '../../utils/post-utils';
 
 export async function getStaticPaths() {
     const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
@@ -72,8 +72,15 @@ if (seo?.image?.src) {
                 <div class="prose prose-slate sm:prose-lg max-w-none">
                     <Content />
                 </div>
-                <div class="mt-8 flex flex-wrap gap-x-3 text-sm sm:mt-12 sm:text-base">
+                <div class="mt-8 flex flex-wrap gap-x-3 gap-y-1 text-sm sm:mt-12 sm:text-base">
                     <span class="font-semibold">Share:</span>
+                    <a
+                        class="text-primary transition duration-300 hover:text-slate-700"
+                        href={`https://bsky.app/intent/compose?text=${encodeURIComponent(title + ' ' + href)}`}
+                        target="_blank"
+                        rel="noopener noreferer"
+                        aria-label="Share on Bluesky">Bluesky</a
+                    >
                     <a
                         class="text-primary transition duration-300 hover:text-slate-700"
                         href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(href)}&text=${encodeURIComponent(title)}`}
