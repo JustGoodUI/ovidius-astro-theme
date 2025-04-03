@@ -23,18 +23,18 @@ const { class: className } = Astro.props;
         primaryNavLinks.length > 0 && (
             <nav class="relative">
                 <button
-                    class="menu-toggle w-10 h-10 inline-flex items-center justify-center bg-primary text-white rounded-full relative z-20 transition-shadow duration-300 hover:shadow-button"
+                    class="relative z-20 inline-flex items-center justify-center w-10 h-10 text-white transition-shadow duration-300 rounded-full cursor-pointer menu-toggle bg-primary hover:shadow-button"
                     aria-label="Open Menu"
                     aria-expanded="false"
                     aria-controls="menu-items"
                 >
-                    <span class="menu-toggle-icon w-1 h-1 relative bg-white rounded-full" />
+                    <span class="relative w-1 h-1 bg-white rounded-full menu-toggle-icon" />
                 </button>
-                <ul id="menu-items" class="menu absolute -top-3 -right-3 px-8 pt-16 pb-10 bg-white/75 border border-white/40 z-10 sm:px-12 sm:pt-20 sm:pb-16">
+                <ul id="menu-items" class="absolute z-10 px-8 pt-16 pb-10 border menu -top-3 -right-3 bg-white/75 border-white/40 sm:px-12 sm:pt-20 sm:pb-16">
                     {primaryNavLinks.map((link) => (
                         <li class="mb-1 border-b border-slate-200/70">
                             <HeaderNavLink
-                                class="block pr-6 py-1 text-lg text-slate-700 font-bold sm:text-xl relative transition duration-300 hover:text-slate-500"
+                                class="relative block py-1 pr-6 text-lg font-bold transition duration-300 text-slate-700 sm:text-xl hover:text-slate-500"
                                 href={link.href}
                             >
                                 {link.text}
@@ -48,6 +48,8 @@ const { class: className } = Astro.props;
 </header>
 
 <style>
+    @reference "tailwindcss";
+
     .menu {
         width: calc(100vw - 0.5rem);
         max-width: 18.75rem;
@@ -88,7 +90,8 @@ const { class: className } = Astro.props;
         transition:
             width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
             height 0s 0.25s,
-            transform 0s 0.25s,
+            translate 0s 0.25s,
+            rotate 0s 0.25s,
             margin 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
     }
     .menu-toggle-icon:before {
@@ -104,7 +107,8 @@ const { class: className } = Astro.props;
         transition:
             margin 0.25s cubic-bezier(0.4, 0, 0.2, 1),
             height 0s 0.25s,
-            transform 0s 0.25s,
+            translate 0s 0.25s,
+            rotate 0s 0.25s,
             width 0.25s cubic-bezier(0.4, 0, 0.2, 1) 0.25s;
     }
     .menu-toggle-icon.is-active:before {
