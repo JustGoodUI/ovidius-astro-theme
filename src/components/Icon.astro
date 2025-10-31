@@ -1,15 +1,18 @@
 ---
-import ArrowLeft from '../icons/ArrowLeft.astro';
-import ArrowRight from '../icons/ArrowRight.astro';
-import Bluesky from '../icons/Bluesky.astro';
-import CodePen from '../icons/CodePen.astro';
-import Dev from '../icons/Dev.astro';
-import Facebook from '../icons/Facebook.astro';
-import GitHub from '../icons/GitHub.astro';
-import Instagram from '../icons/Instagram.astro';
-import LinkedIn from '../icons/LinkedIn.astro';
-import Medium from '../icons/Medium.astro';
-import XTwitter from '../icons/XTwitter.astro';
+import ArrowLeft from '../assets/icons/arrow-left.svg';
+import ArrowRight from '../assets/icons/arrow-right.svg';
+import Bluesky from '../assets/icons/bluesky.svg';
+import CodePen from '../assets/icons/codepen.svg';
+import Dev from '../assets/icons/dev.svg';
+import Facebook from '../assets/icons/facebook.svg';
+import GitHub from '../assets/icons/github.svg';
+import Instagram from '../assets/icons/instagram.svg';
+import LinkedIn from '../assets/icons/linkedin.svg';
+import Mastodon from '../assets/icons/mastodon.svg';
+import Medium from '../assets/icons/medium.svg';
+import Reddit from '../assets/icons/reddit.svg';
+import X from '../assets/icons/x.svg';
+import YouTube from '../assets/icons/youtube.svg';
 
 const iconMap: { [key: string]: any } = {
     'arrow-left': ArrowLeft,
@@ -21,13 +24,21 @@ const iconMap: { [key: string]: any } = {
     github: GitHub,
     instagram: Instagram,
     linkedin: LinkedIn,
+    mastodon: Mastodon,
     medium: Medium,
-    'x-twitter': XTwitter
+    reddit: Reddit,
+    x: X,
+    youtube: YouTube
+};
+
+type Props = {
+    icon: keyof typeof iconMap;
+    class?: string;
 };
 
 const { icon, class: className } = Astro.props;
 
-const IconComponent = icon ? iconMap[icon] : null;
+const IconComponent = iconMap[icon];
 ---
 
 {IconComponent && <IconComponent class={className} />}
