@@ -3,8 +3,8 @@ import { type CollectionEntry, getCollection, render } from 'astro:content';
 import FormattedDate from '../../components/FormattedDate.astro';
 import ReadNextPostPreview from '../../components/ReadNextPostPreview.astro';
 import Subscribe from '../../components/Subscribe.astro';
-import { type Image } from '../../data/site-config';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { type ImageInput } from '../../types';
 import { sortPostsByDateDesc } from '../../utils/post-utils';
 
 export async function getStaticPaths() {
@@ -24,7 +24,7 @@ const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props as { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>; nextPost: CollectionEntry<'blog'> };
 const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured, seo } = post.data;
 const { Content } = await render(post);
-let socialImage: Image | undefined;
+let socialImage: ImageInput | undefined;
 if (featureImage?.src) {
     socialImage = featureImage;
 }

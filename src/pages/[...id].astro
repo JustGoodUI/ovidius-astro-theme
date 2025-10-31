@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
-import { type Image } from '../data/site-config';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { type ImageInput } from '../types';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -16,7 +16,7 @@ export async function getStaticPaths() {
 const { page } = Astro.props as { page: CollectionEntry<'pages'> };
 const { title, featureImage, seo } = page.data;
 const { Content } = await render(page);
-let socialImage: Image | undefined;
+let socialImage: ImageInput | undefined;
 if (featureImage?.src) {
     socialImage = featureImage;
 }
