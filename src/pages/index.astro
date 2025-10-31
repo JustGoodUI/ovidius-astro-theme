@@ -1,21 +1,21 @@
 ---
 import { getCollection } from 'astro:content';
-import NoHeaderLayout from '../layouts/NoHeaderLayout.astro';
+import FeaturedPostPreview from '../components/FeaturedPostPreview.astro';
 import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
-import FeaturedPostPreview from '../components/FeaturedPostPreview.astro';
 import PostPreview from '../components/PostPreview.astro';
-import siteConfig from '../data/site-config';
-import { sortPostsByDateDesc } from '../utils/post-utils';
 import Subscribe from '../components/Subscribe.astro';
+import siteConfig from '../data/site-config';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { sortPostsByDateDesc } from '../utils/post-utils';
 
 const posts = (await getCollection('blog')).sort(sortPostsByDateDesc);
 const featuredPosts = posts.filter(({ data }) => data.isFeatured);
 const latestPosts = posts.filter(({ data }) => !data.isFeatured).slice(0, 3);
 ---
 
-<NoHeaderLayout description={siteConfig.description} image={siteConfig.image}>
-    <div class="relative bg-slate-50 border-b border-slate-100">
+<BaseLayout description={siteConfig.description} image={siteConfig.image}>
+    <div class="relative bg-slate-50 border-b border-slate-100" slot="header">
         <Header class="relative" />
         <Hero />
     </div>
@@ -57,4 +57,4 @@ const latestPosts = posts.filter(({ data }) => !data.isFeatured).slice(0, 3);
         }
         <Subscribe class="px-4 my-12 sm:px-8 sm:my-16" />
     </main>
-</NoHeaderLayout>
+</BaseLayout>
