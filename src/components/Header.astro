@@ -2,14 +2,14 @@
 import HeaderNavLink from './HeaderNavLink.astro';
 import siteConfig from '../data/site-config.ts';
 
-const primaryNavLinks = siteConfig.primaryNavLinks || [];
+const primaryNavLinks = siteConfig.primaryNavLinks ?? [];
 
 const { class: className } = Astro.props;
 ---
 
 <header class:list={['px-4 py-4 flex gap-6 items-center justify-between sm:px-8 sm:py-6', className]}>
     {
-        siteConfig.logo && siteConfig.logo?.src ? (
+        siteConfig.logo?.src ? (
             <a href="/">
                 <img class="max-h-12" src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} />
             </a>
@@ -21,7 +21,7 @@ const { class: className } = Astro.props;
     }
     {
         primaryNavLinks.length > 0 && (
-            <nav class="relative">
+            <nav class="relative" aria-label="Primary navigation">
                 <button
                     class="relative z-20 inline-flex items-center justify-center w-10 h-10 text-white transition-shadow duration-300 rounded-full cursor-pointer menu-toggle bg-primary hover:shadow-button"
                     aria-label="Open Menu"

@@ -6,9 +6,9 @@
 
 @theme {
     --font-sans: 'Figtree Variable', sans-serif;
-    --color-primary: #0293b5;
-    --shadow-avatar: 0 0 1px 11px --alpha(var(--color-primary) / 15%), 0 0 1px 22px --alpha(var(--color-primary) / 10%);
-    --shadow-button: 0 0 1px 6px --alpha(var(--color-primary) / 17.5%);
+    --color-primary: #02738f;
+    --shadow-avatar: 0 0 0 11px --alpha(var(--color-primary) / 15%), 0 0 0 22px --alpha(var(--color-primary) / 10%);
+    --shadow-button: 0 0 0 6px --alpha(var(--color-primary) / 17.5%);
 }
 
 @layer utilities {
