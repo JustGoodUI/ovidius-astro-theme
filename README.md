@@ -6,7 +6,7 @@ Ovidius is a single-author blog theme for Astro.js. Featuring a minimal, slick, 
 
 [![Deploy to Netlify Button](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/JustGoodUI/ovidius-astro-theme)
 
-If you click this☝️ button, it will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
+Clicking the button above ☝️ will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
 
 ## Theme Features:
 
@@ -17,6 +17,7 @@ If you click this☝️ button, it will create a new repo for you that looks exa
 - ✅ Sitemap support
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
+- ✅ Optimized images using Astro’s `Image` component
 
 ## Template Integrations
 
@@ -25,6 +26,36 @@ If you click this☝️ button, it will create a new repo for you that looks exa
 - @astrojs/mdx - https://docs.astro.build/en/guides/markdown-content/
 - @astrojs/rss - https://docs.astro.build/en/guides/rss/
 
+---
+
+## ⚙️ Configuration Notes
+
+### `astro.config.mjs`
+
+Set your deployed domain in the `site` property:
+
+```js
+// astro.config.mjs
+export default defineConfig({
+  site: 'https://example.com'
+});
+```
+
+This is required for correct image optimization and sitemap generation.
+
+### `site-config.ts`
+
+All site-wide data and theme options are stored in `src/data/site-config.ts`.
+
+### Images
+
+The theme uses a `CustomImage` component that automatically displays images using Astro’s optimized `<Image />` or a standard `<img>` tag depending on the source.
+
+- Content collection images (used in posts or pages) must be stored in `src/assets/` since they use Astro’s `image()` schema.
+- Site-config images (like the logo, hero background, or social preview) can either be imported from `src/assets/` for optimization or referenced directly from `public/` (e.g. /logo.svg) if you prefer not to optimize them.
+
+The `public/` directory can still be used for static files like favicons, fonts, or robots.txt.
+
 ## 🚀 Project Structure
 
 Inside of Ovidius Astro theme, you'll see the following folders and files:
@@ -32,15 +63,17 @@ Inside of Ovidius Astro theme, you'll see the following folders and files:
 ```text
 ├── public/
 ├── src/
+│   ├── assets/
 │   ├── components/
 │   ├── content/
 │   ├── data/
-│   ├── icons/
 │   ├── layouts/
 │   ├── pages/
-│   └── styles/
+│   ├── styles/
+│   ├── utils/
+│   ├── content.config.ts
+│   └── types.ts
 ├── astro.config.mjs
-├── tailwind.config.cjs
 ├── README.md
 ├── package.json
 └── tsconfig.json
@@ -51,8 +84,6 @@ Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page
 There's nothing special about `src/components/`, but that's where we like to put any Astro (`.astro`) components.
 
 The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
-
-Any static assets, like images, can be placed in the `public/` directory.
 
 ## Astro.js Commands
 
@@ -78,7 +109,7 @@ Check out [our documentation](https://docs.astro.build) or jump into our [Discor
 
 ## Astro Themes by Just Good UI
 
-- [Dante](https://github.com/JustGoodUI/dante-astro-theme) is a free single-author blog and portfolio theme. 
+- [Dante](https://github.com/JustGoodUI/dante-astro-theme) is a free single-author blog and portfolio theme.
 
 ## License
 
