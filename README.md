@@ -26,8 +26,6 @@ Clicking the button above ☝️ will create a new repo for you that looks exact
 - @astrojs/mdx - https://docs.astro.build/en/guides/markdown-content/
 - @astrojs/rss - https://docs.astro.build/en/guides/rss/
 
----
-
 ## ⚙️ Configuration Notes
 
 ### `astro.config.mjs`
