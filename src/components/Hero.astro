@@ -29,7 +29,7 @@ const { title, text, avatar, backgroundImage, socialLinks } = Astro.props;
                         <div class="p-6 mb-6">
                             <CustomImage
                                 {...avatar}
-                                class="object-cover w-32 border-2 rounded-full aspect-square border-primary shadow-avatar"
+                                class="object-cover w-32 border-2 rounded-full border-primary shadow-avatar aspect-square"
                                 width={128}
                                 height={128}
                                 widths={[128, 256]}
@@ -40,13 +40,11 @@ const { title, text, avatar, backgroundImage, socialLinks } = Astro.props;
                         </div>
                     )}
                     {title && <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl">{title}</h1>}
-                    {text && (
-                        <p class:list={['text-slate-700 sm:text-lg', { 'mt-4': title }]}>{text}</p>
-                    )}
+                    {text && <p class:list={['text-slate-700 sm:text-lg', { 'mt-4': title }]}>{text}</p>}
                     {socialLinks && socialLinks.length > 0 && (
-                        <div class:list={['flex flex-wrap gap-x-4 gap-y-3 justify-center', { 'mt-8': title || text }]}>
+                        <div class:list={['flex flex-wrap justify-center gap-x-4 gap-y-3', { 'mt-8': title || text }]}>
                             {socialLinks.map((link) => (
-                                <SocialLink {...link} class="bg-white text-slate-700 hover:bg-primary hover:text-white hover:shadow-button" />
+                                <SocialLink {...link} class="bg-white hover:bg-primary hover:shadow-button text-slate-700 hover:text-white" />
                             ))}
                         </div>
                     )}

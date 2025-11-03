@@ -16,15 +16,15 @@
         @apply text-primary underline decoration-1 underline-offset-2 hover:no-underline;
     }
     .prose blockquote {
-        @apply relative font-semibold not-italic border-none pl-0 text-[1.375em] leading-snug text-center sm:text-[1.66667em] lg:-mx-24 xl:-mx-40;
+        @apply relative border-none pl-0 text-center text-[1.375em] leading-snug font-semibold not-italic sm:text-[1.66667em] lg:-mx-24 xl:-mx-40;
     }
     .prose blockquote:before {
-        @apply block w-15 h-0.75 mx-auto bg-primary;
+        @apply bg-primary mx-auto block h-0.75 w-15;
         content: '';
         margin-bottom: 1.375em;
     }
     .prose blockquote:after {
-        @apply block w-7.5 h-0.75 mx-auto bg-primary;
+        @apply bg-primary mx-auto block h-0.75 w-7.5;
         content: '';
         margin-top: 1.375em;
     }

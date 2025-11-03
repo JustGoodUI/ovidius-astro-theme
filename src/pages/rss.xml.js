@@ -1,6 +1,6 @@
 import rss from '@astrojs/rss';
 import { getCollection } from 'astro:content';
-import siteConfig from '../data/site-config.ts';
+import siteConfig from '../data/site-config';
 import { sortPostsByDateDesc } from '../utils/post-utils';
 
 export async function GET(context) {

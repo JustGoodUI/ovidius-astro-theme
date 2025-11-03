@@ -19,10 +19,18 @@ export type Hero = {
     backgroundImage?: ImageInput;
 };
 
+export type SubscribeForm = {
+    action: string;
+    emailFieldName?: string;
+    hiddenFields?: { name: string; value: string }[];
+    honeypotFieldName?: string;
+};
+
 export type Subscribe = {
+    enabled?: boolean;
     title?: string;
     text?: string;
-    formUrl?: string;
+    form?: SubscribeForm;
 };
 
 export type SiteConfig = {

@@ -4,7 +4,7 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import Icon from '../../components/Icon.astro';
 import PostPreview from '../../components/PostPreview.astro';
 import Subscribe from '../../components/Subscribe.astro';
-import siteConfig from '../../data/site-config.ts';
+import siteConfig from '../../data/site-config';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { sortPostsByDateDesc } from '../../utils/post-utils';
 
@@ -28,7 +28,7 @@ const blog = page.data;
                 {
                     page.url.prev && (
                         <a
-                            class="absolute left-0 inline-flex items-center justify-center w-10 h-10 text-lg transition duration-300 -translate-y-1/2 rounded-full top-1/2 bg-slate-50 text-slate-700 hover:bg-primary hover:text-white hover:shadow-button"
+                            class="absolute left-0 inline-flex items-center justify-center w-10 h-10 text-lg transition duration-300 -translate-y-1/2 rounded-full hover:bg-primary hover:shadow-button top-1/2 bg-slate-50 text-slate-700 hover:text-white"
                             href={page.url.prev}
                             rel="prefetch"
                             aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`}
@@ -41,7 +41,7 @@ const blog = page.data;
                 {
                     page.url.next && (
                         <a
-                            class="absolute right-0 inline-flex items-center justify-center w-10 h-10 text-lg transition duration-300 -translate-y-1/2 rounded-full top-1/2 bg-slate-50 text-slate-700 hover:bg-primary hover:text-white hover:shadow-button"
+                            class="absolute right-0 inline-flex items-center justify-center w-10 h-10 text-lg transition duration-300 -translate-y-1/2 rounded-full hover:bg-primary hover:shadow-button top-1/2 bg-slate-50 text-slate-700 hover:text-white"
                             href={page.url.next}
                             rel="prefetch"
                             aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`}

@@ -23,7 +23,7 @@ const currentYear = new Date().getFullYear();
         socialLinks.length > 0 && (
             <div class="flex flex-wrap justify-center w-full max-w-3xl mx-auto mb-6 gap-x-4 gap-y-3">
                 {socialLinks.map((link) => (
-                    <SocialLink {...link} class="bg-slate-50 text-slate-700 hover:bg-primary hover:text-white hover:shadow-button" />
+                    <SocialLink {...link} class="hover:bg-primary hover:shadow-button bg-slate-50 text-slate-700 hover:text-white" />
                 ))}
             </div>
         )

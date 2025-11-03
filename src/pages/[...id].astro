@@ -18,7 +18,7 @@ const { title, featureImage, seo } = page.data;
 const { Content } = await render(page);
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image ?? featureImage} >
+<BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image ?? featureImage}>
     <main class="px-4 py-12 grow sm:px-8 sm:py-16">
         <article class="max-w-6xl mx-auto">
             <header class="max-w-3xl mx-auto mb-9">
@@ -33,7 +33,7 @@ const { Content } = await render(page);
                             widths={[480, 640, 768, 960, 1200, 1600]}
                             sizes="(min-width: 1216px) 1152px, calc(100vw - 32px)"
                         />
-                        {featureImage.caption && <figcaption class="text-xs mt-1.5">{featureImage.caption}</figcaption>}
+                        {featureImage.caption && <figcaption class="mt-1.5 text-xs">{featureImage.caption}</figcaption>}
                     </figure>
                 )
             }

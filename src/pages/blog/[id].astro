@@ -106,7 +106,7 @@ const { Content } = await render(post);
         {
             (prevPost || nextPost) && (
                 <div class="max-w-3xl mx-auto mb-12 sm:mb-16">
-                    <h2 class="mb-8 text-sm uppercase tracking-wider text-slate-900 after:content-[''] after:block after:w-16 after:h-px after:bg-primary after:mt-4 sm:mb-12">
+                    <h2 class="after:bg-primary mb-8 text-sm tracking-wider text-slate-900 uppercase after:mt-4 after:block after:h-px after:w-16 after:content-[''] sm:mb-12">
                         Read Next
                     </h2>
                     {nextPost && <ReadNextPostPreview post={nextPost} />}
@@ -114,6 +114,6 @@ const { Content } = await render(post);
                 </div>
             )
         }
-        <Subscribe class="my-12 sm:my-16" />
+        <Subscribe class="mt-16 mb-12 sm:mt-24 sm:mb-16" />
     </main>
 </BaseLayout>

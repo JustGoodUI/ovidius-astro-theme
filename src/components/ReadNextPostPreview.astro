@@ -7,9 +7,9 @@ const { post } = Astro.props as { post: CollectionEntry<'blog'> };
 const { title, publishDate, updatedDate, featureImage } = post.data;
 ---
 
-<article class="mb-12 flex flex-col gap-x-8 gap-y-6 sm:flex-row">
+<article class="flex flex-col mb-12 gap-x-8 gap-y-6 sm:flex-row">
     <header class="grow">
-        <div class="mb-2 text-sm uppercase tracking-wider text-slate-500">
+        <div class="mb-2 text-sm tracking-wider uppercase text-slate-500">
             <FormattedDate date={publishDate} />
             {
                 updatedDate && (

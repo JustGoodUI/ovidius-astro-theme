@@ -1,13 +1,14 @@
 ---
 import HeaderNavLink from './HeaderNavLink.astro';
-import siteConfig from '../data/site-config.ts';import CustomImage from './CustomImage.astro';
+import siteConfig from '../data/site-config';
+import CustomImage from './CustomImage.astro';
 
 const primaryNavLinks = siteConfig.primaryNavLinks ?? [];
 
 const { class: className } = Astro.props;
 ---
 
-<header class:list={['px-4 py-4 flex gap-6 items-center justify-between sm:px-8 sm:py-6', className]}>
+<header class:list={['flex items-center justify-between gap-6 px-4 py-4 sm:px-8 sm:py-6', className]}>
     {
         siteConfig.logo?.src ? (
             <a href="/">
@@ -30,11 +31,11 @@ const { class: className } = Astro.props;
                 >
                     <span class="relative w-1 h-1 bg-white rounded-full menu-toggle-icon" />
                 </button>
-                <ul id="menu-items" class="absolute z-10 px-8 pt-16 pb-10 border menu -top-3 -right-3 bg-white/75 border-white/40 sm:px-12 sm:pt-20 sm:pb-16">
+                <ul id="menu-items" class="absolute z-10 px-8 pt-16 pb-10 border menu -top-3 -right-3 border-white/40 bg-white/75 sm:px-12 sm:pt-20 sm:pb-16">
                     {primaryNavLinks.map((link) => (
                         <li class="mb-1 border-b border-slate-200/70">
                             <HeaderNavLink
-                                class="relative block py-1 pr-6 text-lg font-bold transition duration-300 text-slate-700 sm:text-xl hover:text-slate-500"
+                                class="relative block py-1 pr-6 text-lg font-bold transition duration-300 text-slate-700 hover:text-slate-500 sm:text-xl"
                                 href={link.href}
                             >
                                 {link.text}
@@ -85,7 +86,7 @@ const { class: className } = Astro.props;
     }
     .menu-toggle-icon:before,
     .menu-toggle-icon:after {
-        @apply w-1 h-1 absolute left-1/2 top-1/2 bg-white rounded-full -translate-x-1/2 -translate-y-1/2;
+        @apply absolute top-1/2 left-1/2 h-1 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white;
         content: '';
         transition:
             width 0.25s cubic-bezier(0.4, 0, 0.2, 1),
@@ -102,7 +103,7 @@ const { class: className } = Astro.props;
     }
     .menu-toggle-icon.is-active:before,
     .menu-toggle-icon.is-active:after {
-        @apply w-5 ml-0 rounded-md;
+        @apply ml-0 w-5 rounded-md;
         height: 3px;
         transition:
             margin 0.25s cubic-bezier(0.4, 0, 0.2, 1),
