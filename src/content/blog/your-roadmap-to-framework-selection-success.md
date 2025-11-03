@@ -1,14 +1,14 @@
 ---
 title: Your Roadmap to Framework Selection Success
 excerpt: Choosing the right framework for your web project is a critical decision that can significantly impact the development process and the success of your project. With so many options available, it's essential to consider various factors before making a choice.
-publishDate: 'Jan 15 2024'
+publishDate: 'Sep 15 2025'
 featureImage:
-  src: '/post-5.webp'
+  src: '../../assets/images/post-5.jpg'
   alt: Stairs
 isFeatured: true
 seo:
   image:
-    src: '/post-5.jpg'
+    src: '../../assets/images/post-5.jpg'
 ---
 
 **Choosing the right framework** for your web project is a critical decision that can significantly impact the development process and the success of your project. With so many options available, it's essential to consider various factors before making a choice. Here's a step-by-step guide on how to choose the right framework for your web project.
@@ -33,7 +33,7 @@ Assess the skills and expertise of your development team. Choose a framework tha
 
 The strength and vitality of a framework's community and ecosystem are paramount considerations when making your choice. A thriving community signifies that the framework is actively used and supported by developers worldwide. Here's why this matters.
 
-![Community and Ecosystem](/post-5-1.webp)
+![Community and Ecosystem](../../assets/images/post-5-1.jpg)
 
 > Good code is its own best documentation. As you're about to add a comment, ask yourself, 'How can I improve the code so that this comment isn't needed? - **Steve McConnell**
 

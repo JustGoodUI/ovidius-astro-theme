@@ -14,12 +14,12 @@ const featuredPosts = posts.filter(({ data }) => data.isFeatured);
 const latestPosts = posts.filter(({ data }) => !data.isFeatured).slice(0, 3);
 ---
 
-<BaseLayout description={siteConfig.description} image={siteConfig.image}>
-    <div class="relative bg-slate-50 border-b border-slate-100" slot="header">
+<BaseLayout description={siteConfig.description}>
+    <div class="relative border-b bg-slate-50 border-slate-100" slot="header">
         <Header class="relative" />
-        <Hero />
+        <Hero {...siteConfig.hero} socialLinks={siteConfig.socialLinks} />
     </div>
-    <main class="grow py-12 sm:py-16">
+    <main class="py-12 grow sm:py-16">
         {
             featuredPosts?.length > 0 && (
                 <div class="px-4 mb-12 border-b border-slate-200 sm:px-8 sm:mb-16">
@@ -44,7 +44,7 @@ const latestPosts = posts.filter(({ data }) => !data.isFeatured).slice(0, 3);
                             <PostPreview post={post} />
                         ))}
                     </div>
-                    <div class="max-w-3xl mx-auto pt-8 border-t border-slate-200 sm:pt-12">
+                    <div class="max-w-3xl pt-8 mx-auto border-t border-slate-200 sm:pt-12">
                         <a
                             class="px-8 py-2.5 inline-flex gap-1.5 justify-center items-center font-semibold bg-primary text-white rounded-full transition duration-300 hover:shadow-button"
                             href="/blog"

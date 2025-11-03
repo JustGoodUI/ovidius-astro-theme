@@ -1,5 +1,6 @@
 ---
 import { type CollectionEntry } from 'astro:content';
+import CustomImage from './CustomImage.astro';
 import FormattedDate from './FormattedDate.astro';
 
 const { post } = Astro.props as { post: CollectionEntry<'blog'> };
@@ -29,7 +30,12 @@ const { title, publishDate, updatedDate, featureImage } = post.data;
         featureImage?.src && (
             <figure class="shrink-0 sm:w-40">
                 <a href={`/blog/${post.id}/`}>
-                    <img class="w-full rounded-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+                    <CustomImage
+                        {...featureImage}
+                        class="w-full rounded-md"
+                        widths={[160, 320, 480, 640]}
+                        sizes="(min-width: 640px) 160px, calc(100vw - 32px)"
+                    />
                 </a>
             </figure>
         )

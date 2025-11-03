@@ -1,13 +1,13 @@
 ---
 title: Communication and Collaboration for Front-End Developers
 excerpt: Front-end development is not just about writing code; it's also about working seamlessly with others to create outstanding user experiences. Effective communication and collaboration are essential skills for front-end developers to succeed in today's dynamic and interdependent tech industry.
-publishDate: 'Jul 23 2023'
+publishDate: 'Dec 23 2023'
 featureImage:
-  src: '/post-2.webp'
+  src: '../../assets/images/post-2.jpg'
   alt: Sun and sea waves
 seo:
   image:
-    src: '/post-2.jpg'
+    src: '../../assets/images/post-2.jpg'
 ---
 
 Front-end development is not just about writing code; it's also about working seamlessly with others to create outstanding user experiences. Effective communication and collaboration are essential skills for front-end developers to succeed in today's dynamic and interdependent tech industry. In this post, we'll explore why these skills matter and provide practical tips for front-end developers looking to excel in these areas.

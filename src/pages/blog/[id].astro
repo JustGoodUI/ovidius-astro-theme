@@ -1,10 +1,10 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import CustomImage from '../../components/CustomImage.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import ReadNextPostPreview from '../../components/ReadNextPostPreview.astro';
 import Subscribe from '../../components/Subscribe.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { type ImageInput } from '../../types';
 import { sortPostsByDateDesc } from '../../utils/post-utils';
 
 export async function getStaticPaths() {
@@ -24,20 +24,13 @@ const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props as { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>; nextPost: CollectionEntry<'blog'> };
 const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured, seo } = post.data;
 const { Content } = await render(post);
-let socialImage: ImageInput | undefined;
-if (featureImage?.src) {
-    socialImage = featureImage;
-}
-if (seo?.image?.src) {
-    socialImage = seo.image;
-}
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={socialImage} pageType="article">
-    <main class="grow px-4 py-12 sm:px-8 sm:py-16">
+<BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image ?? featureImage} pageType="article">
+    <main class="px-4 py-12 grow sm:px-8 sm:py-16">
         <article class="max-w-6xl mx-auto mb-12 sm:mb-16">
             <header class="max-w-3xl mx-auto mb-6 sm:mb-8">
-                <div class="mb-3 text-sm uppercase tracking-wider text-slate-500">
+                <div class="mb-3 text-sm tracking-wider uppercase text-slate-500">
                     {
                         isFeatured && (
                             <>
@@ -62,8 +55,13 @@ if (seo?.image?.src) {
             </header>
             {
                 featureImage?.src && (
-                    <figure class="mx-auto my-6 sm:my-8 lg:my-12">
-                        <img class="w-full rounded-lg" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+                    <figure class="my-6 sm:my-8 lg:my-12">
+                        <CustomImage
+                            {...featureImage}
+                            class="w-full rounded-lg"
+                            widths={[480, 640, 768, 960, 1200, 1600]}
+                            sizes="(min-width: 1216px) 1152px, calc(100vw - 32px)"
+                        />
                         {featureImage.caption && <figcaption class="mt-1.5 text-xs sm:text-sm">{featureImage.caption}</figcaption>}
                     </figure>
                 )
@@ -72,31 +70,31 @@ if (seo?.image?.src) {
                 <div class="prose prose-slate sm:prose-lg max-w-none">
                     <Content />
                 </div>
-                <div class="mt-8 flex flex-wrap gap-x-3 gap-y-1 text-sm sm:mt-12 sm:text-base">
+                <div class="flex flex-wrap mt-8 text-sm gap-x-3 gap-y-1 sm:mt-12 sm:text-base">
                     <span class="font-semibold">Share:</span>
                     <a
-                        class="text-primary transition duration-300 hover:text-slate-700"
+                        class="transition duration-300 text-primary hover:text-slate-700"
                         href={`https://bsky.app/intent/compose?text=${encodeURIComponent(title + ' ' + href)}`}
                         target="_blank"
                         rel="noopener noreferer"
                         aria-label="Share on Bluesky">Bluesky</a
                     >
                     <a
-                        class="text-primary transition duration-300 hover:text-slate-700"
+                        class="transition duration-300 text-primary hover:text-slate-700"
                         href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(href)}&text=${encodeURIComponent(title)}`}
                         target="_blank"
                         rel="noopener noreferer"
                         aria-label="Share on X">X/Twitter</a
                     >
                     <a
-                        class="text-primary transition duration-300 hover:text-slate-700"
+                        class="transition duration-300 text-primary hover:text-slate-700"
                         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(href)}`}
                         target="_blank"
                         rel="noopener noreferer"
                         aria-label="Share on Facebook">Facebook</a
                     >
                     <a
-                        class="text-primary transition duration-300 hover:text-slate-700"
+                        class="transition duration-300 text-primary hover:text-slate-700"
                         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(href)}&summary=${encodeURIComponent(title)}`}
                         target="_blank"
                         rel="noopener noreferer"

@@ -1,6 +1,6 @@
 ---
 import HeaderNavLink from './HeaderNavLink.astro';
-import siteConfig from '../data/site-config.ts';
+import siteConfig from '../data/site-config.ts';import CustomImage from './CustomImage.astro';
 
 const primaryNavLinks = siteConfig.primaryNavLinks ?? [];
 
@@ -11,7 +11,7 @@ const { class: className } = Astro.props;
     {
         siteConfig.logo?.src ? (
             <a href="/">
-                <img class="max-h-12" src={siteConfig.logo.src} alt={siteConfig.logo.alt || ''} />
+                <CustomImage class="max-h-12" {...siteConfig.logo} loading="eager" fetchpriority="high" />
             </a>
         ) : (
             <a class="text-xl font-bold sm:text-2xl" href="/">

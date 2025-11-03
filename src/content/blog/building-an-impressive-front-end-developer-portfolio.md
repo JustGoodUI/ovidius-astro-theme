@@ -1,13 +1,13 @@
 ---
 title: Building an Impressive Front-End Developer Portfolio
 excerpt: In the competitive world of front-end development, a strong portfolio is your ticket to showcasing your skills, making a lasting impression on potential employers or clients, and advancing your career. Your portfolio is your digital business card, and it should be a reflection of your talent, creativity, and expertise.
-publishDate: 'Jan 10 2024'
+publishDate: 'Jun 10 2025'
 featureImage:
-  src: '/post-8.webp'
+  src: '../../assets/images/post-8.jpg'
   alt: Golden and blue geometrical shapes
 seo:
   image:
-    src: '/post-8.jpg'
+    src: '../../assets/images/post-8.jpg'
     alt: Golden and blue geometrical shapes
 ---
 

@@ -1,14 +1,18 @@
+import heroAvatar from '../assets/images/avatar.jpg';
+import heroBackground from '../assets/images/hero.webp';
+import logoUrl from '../assets/images/logo.svg?url';
+import defaultSocial from '../assets/images/ovidius-preview.jpg';
 import type { SiteConfig } from '../types';
 
 const siteConfig: SiteConfig = {
     logo: {
-        src: '/logo.svg',
+        src: logoUrl,
         alt: 'Ovidius logo'
     },
     title: 'Ovidius',
     description: 'Astro.js and Tailwind CSS theme for blogging by justgoodui.com',
     image: {
-        src: '/ovidius-preview.jpg',
+        src: defaultSocial,
         alt: 'Ovidius - Astro.js and Tailwind CSS theme'
     },
     primaryNavLinks: [
@@ -72,11 +76,11 @@ const siteConfig: SiteConfig = {
         title: 'Hi there!',
         text: "My name is Justin Case. I'm a freelance front-end developer, author and speaker based in Austin, TX. It's nice to meet you.",
         avatar: {
-            src: '/avatar.jpg',
+            src: heroAvatar,
             alt: 'Justin Case'
         },
         backgroundImage: {
-            src: '/hero.webp'
+            src: heroBackground
         }
     },
     subscribe: {

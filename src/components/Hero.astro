@@ -1,35 +1,51 @@
 ---
-import siteConfig from '../data/site-config.ts';
+import type { Hero as HeroProps, SocialLink as SocialLinkProps } from '../types';
+import CustomImage from './CustomImage.astro';
 import SocialLink from './SocialLink.astro';
 
-const hero = siteConfig.hero;
-const socialLinks = siteConfig.socialLinks || [];
+type Props = HeroProps & {
+    socialLinks?: SocialLinkProps[];
+};
+
+const { title, text, avatar, backgroundImage, socialLinks } = Astro.props;
 ---
 
 {
-    (hero?.title || hero?.text || hero?.avatar?.src) && (
+    (title || text || avatar?.src) && (
         <>
-            {hero?.backgroundImage?.src && (
-                <div class="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: `url(${hero?.backgroundImage?.src})` }} />
+            {backgroundImage?.src && (
+                <CustomImage
+                    {...backgroundImage}
+                    class="absolute inset-0 object-cover w-full h-full pointer-events-none opacity-20"
+                    sizes="100vw"
+                    widths={[640, 960, 1280, 1600, 1920]}
+                    fetchpriority="high"
+                    loading="eager"
+                />
             )}
-            <section class="px-4 py-12 relative sm:px-8 sm:py-16">
-                <div class="w-full max-w-3xl mx-auto flex flex-col items-center text-center">
-                    {hero?.avatar?.src && (
-                        <div class="p-6">
-                            <img
-                                src={hero?.avatar?.src}
-                                alt={hero?.avatar?.alt || ''}
-                                class="w-32 aspect-square object-cover rounded-full border-2 border-primary shadow-avatar"
+            <section class="relative px-4 py-12 sm:px-8 sm:py-16">
+                <div class="flex flex-col items-center w-full max-w-3xl mx-auto text-center">
+                    {avatar?.src && (
+                        <div class="p-6 mb-6">
+                            <CustomImage
+                                {...avatar}
+                                class="object-cover w-32 border-2 rounded-full aspect-square border-primary shadow-avatar"
+                                width={128}
+                                height={128}
+                                widths={[128, 256]}
+                                sizes="128px"
+                                fetchpriority="high"
+                                loading="eager"
                             />
                         </div>
                     )}
-                    {hero?.title && <h1 class:list={['text-4xl font-bold text-slate-900 sm:text-5xl', { 'mt-6': hero?.avatar?.src }]}>{hero?.title}</h1>}
-                    {hero?.text && (
-                        <p class:list={['text-slate-700 sm:text-lg', { 'mt-4': hero?.title, 'mt-6': hero?.avatar?.src && !hero?.title }]}>{hero?.text}</p>
+                    {title && <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl">{title}</h1>}
+                    {text && (
+                        <p class:list={['text-slate-700 sm:text-lg', { 'mt-4': title }]}>{text}</p>
                     )}
-                    {socialLinks.length > 0 && (
-                        <div class:list={['flex flex-wrap gap-x-4 gap-y-3 justify-center', { 'mt-7': hero?.avatar?.src || hero?.title || hero?.text }]}>
-                            {(siteConfig.socialLinks || []).map((link) => (
+                    {socialLinks && socialLinks.length > 0 && (
+                        <div class:list={['flex flex-wrap gap-x-4 gap-y-3 justify-center', { 'mt-8': title || text }]}>
+                            {socialLinks.map((link) => (
                                 <SocialLink {...link} class="bg-white text-slate-700 hover:bg-primary hover:text-white hover:shadow-button" />
                             ))}
                         </div>

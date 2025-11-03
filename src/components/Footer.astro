@@ -10,9 +10,9 @@ const currentYear = new Date().getFullYear();
 <footer class="px-4 py-8 sm:px-8 sm:py-12">
     {
         secondaryNavLinks.length > 0 && (
-            <nav class="w-full max-w-3xl mx-auto mb-6 flex flex-wrap gap-x-6 gap-y-1 justify-center" aria-label="Footer navigation">
+            <nav class="flex flex-wrap justify-center w-full max-w-3xl mx-auto mb-6 gap-x-6 gap-y-1" aria-label="Footer navigation">
                 {secondaryNavLinks.map((link) => (
-                    <a class="text-slate-700 transition hover:text-slate-500" href={link.href}>
+                    <a class="transition text-slate-700 hover:text-slate-500" href={link.href}>
                         {link.text}
                     </a>
                 ))}
@@ -21,16 +21,16 @@ const currentYear = new Date().getFullYear();
     }
     {
         socialLinks.length > 0 && (
-            <div class="w-full max-w-3xl mx-auto mb-6 flex flex-wrap gap-x-4 gap-y-3 justify-center">
+            <div class="flex flex-wrap justify-center w-full max-w-3xl mx-auto mb-6 gap-x-4 gap-y-3">
                 {socialLinks.map((link) => (
                     <SocialLink {...link} class="bg-slate-50 text-slate-700 hover:bg-primary hover:text-white hover:shadow-button" />
                 ))}
             </div>
         )
     }
-    <p class="text-center text-xs uppercase tracking-wider text-slate-700">
+    <p class="text-xs tracking-wider text-center uppercase text-slate-700">
         &copy; {currentYear}
-        <a class="text-primary underline hover:no-underline" href="/">{siteConfig.title}</a>. Created with Astro.js &
-        <a class="text-primary underline hover:no-underline" href="https://justgoodui.com/astro-themes/ovidius/"> Ovidius theme</a>.
+        <a class="underline text-primary hover:no-underline" href="/">{siteConfig.title}</a>. Created with Astro.js &
+        <a class="underline text-primary hover:no-underline" href="https://justgoodui.com/astro-themes/ovidius/"> Ovidius theme</a>.
     </p>
 </footer>

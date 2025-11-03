@@ -3,11 +3,11 @@ title: Exploring the Future of Front-End Development with Astro.js
 excerpt: Front-end development is a dynamic field that continually evolves to meet the demands of modern web development. In recent years, we've seen the rise of various tools and frameworks that have revolutionized the way we build web applications. One such exciting addition to the front-end development landscape is Astro.js.
 publishDate: 'Jul 15 2023'
 featureImage:
-  src: '/post-1.webp'
+  src: '../../assets/images/post-1.jpg'
   alt: Laptop computer
 seo:
   image:
-    src: '/post-1.jpg'
+    src: '../../assets/images/post-1.jpg'
 ---
 
 Front-end development is a dynamic field that continually evolves to meet the demands of modern web development. In recent years, we've seen the rise of various tools and frameworks that have revolutionized the way we build web applications. One such exciting addition to the front-end development landscape is Astro.js. In this post, we'll explore what Astro.js is and how it promises to shape the future of front-end development.

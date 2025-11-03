@@ -1,13 +1,13 @@
 ---
 title: About
 featureImage:
-  src: '/about.webp'
+  src: '../../assets/images/about.jpg'
   alt: The portrait of a person
 seo:
   title: About
   description: About Justin Case
   image:
-    src: '/about.jpg'
+    src: '../../assets/images/about.jpg'
 ---
 
 **This is demo content for [Ovidius](https://github.com/JustGoodUI) Astro.js and Tailwind CSS theme created by [justgoodui.com](https://justgoodui.com/).**

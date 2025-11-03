@@ -1,7 +1,7 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
+import CustomImage from '../components/CustomImage.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { type ImageInput } from '../types';
 
 export async function getStaticPaths() {
     const pages = await getCollection('pages');
@@ -16,25 +16,23 @@ export async function getStaticPaths() {
 const { page } = Astro.props as { page: CollectionEntry<'pages'> };
 const { title, featureImage, seo } = page.data;
 const { Content } = await render(page);
-let socialImage: ImageInput | undefined;
-if (featureImage?.src) {
-    socialImage = featureImage;
-}
-if (seo?.image?.src) {
-    socialImage = seo.image;
-}
 ---
 
-<BaseLayout title={seo?.title ?? title} description={seo?.description} image={socialImage}>
-    <main class="grow px-4 py-12 sm:px-8 sm:py-16">
+<BaseLayout title={seo?.title ?? title} description={seo?.description} image={seo?.image ?? featureImage} >
+    <main class="px-4 py-12 grow sm:px-8 sm:py-16">
         <article class="max-w-6xl mx-auto">
             <header class="max-w-3xl mx-auto mb-9">
-                <h1 class="text-slate-900 text-4xl sm:text-5xl font-bold">{title}</h1>
+                <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl">{title}</h1>
             </header>
             {
                 featureImage?.src && (
-                    <figure class="mx-auto mb-9">
-                        <img src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} class="w-full rounded-md" />
+                    <figure class="mb-9">
+                        <CustomImage
+                            {...featureImage}
+                            class="w-full rounded-md"
+                            widths={[480, 640, 768, 960, 1200, 1600]}
+                            sizes="(min-width: 1216px) 1152px, calc(100vw - 32px)"
+                        />
                         {featureImage.caption && <figcaption class="text-xs mt-1.5">{featureImage.caption}</figcaption>}
                     </figure>
                 )

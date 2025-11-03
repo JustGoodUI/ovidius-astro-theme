@@ -1,14 +1,15 @@
 ---
 import { type CollectionEntry } from 'astro:content';
+import CustomImage from './CustomImage.astro';
 import FormattedDate from './FormattedDate.astro';
 
 const { post } = Astro.props as { post: CollectionEntry<'blog'> };
 const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = post.data;
 ---
 
-<article class="post-card mb-12 sm:mb-16">
+<article class="mb-12 post-card sm:mb-16">
     <header class="post-card-header">
-        <div class="mb-2 text-sm uppercase tracking-wider text-slate-500">
+        <div class="mb-2 text-sm tracking-wider uppercase text-slate-500">
             {
                 isFeatured && (
                     <>
@@ -33,16 +34,21 @@ const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = p
     </header>
     {
         featureImage?.src && (
-            <figure class="post-card-thumbnail mt-6 mb-6 xl:mb-0">
+            <figure class="mt-6 mb-6 post-card-thumbnail xl:mt-7 xl:mb-0">
                 <a href={`/blog/${post.id}/`}>
-                    <img class="w-full rounded-md" src={featureImage.src} loading="lazy" decoding="async" alt={featureImage.alt || ''} />
+                    <CustomImage
+                        {...featureImage}
+                        class="w-full rounded-md"
+                        widths={[160, 320, 480, 640, 768, 960, 1200]}
+                        sizes="(min-width: 1280px) 160px, (min-width: 832px) 768px, calc(100vw - 32px)"
+                    />
                 </a>
             </figure>
         )
     }
     {
         excerpt && (
-            <div class="post-card-content mt-4">
+            <div class="mt-4 post-card-content">
                 <div class="prose prose-slate max-w-none sm:prose-lg">{excerpt}</div>
             </div>
         )
