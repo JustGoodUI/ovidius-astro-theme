@@ -43,7 +43,18 @@ This is required for correct image optimization and sitemap generation.
 
 ### `site-config.ts`
 
-All site-wide data and theme options are stored in `src/data/site-config.ts`.
+All site-wide data and theme options are stored in `src/data/site-config.ts`. It provides a single configuration object used throughout the theme for navigation, branding, hero content, social links, and more.
+
+You can update this file to customize:
+
+- Site identity — title, description, logo, and default social share image
+- Navigation — primary and secondary navigation links
+- Social links — icons and URLs for supported platforms
+- Hero section — title, text, avatar, and background image
+- Newsletter subscription — form settings suitable for Mailchimp, Formspree, ConvertKit, or other form-based providers. The form supports a custom action URL, configurable email and hidden fields, and an optional honeypot field for spam protection.
+- Pagination — posts per page for blog listings
+
+Images can be referenced either as imports from `src/assets` (for optimized Astro images) or as string paths from the `public` directory.
 
 ### Images
 
