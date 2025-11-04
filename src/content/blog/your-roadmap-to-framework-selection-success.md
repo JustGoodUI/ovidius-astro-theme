@@ -5,6 +5,7 @@ publishDate: 'Sep 15 2025'
 featureImage:
   src: '../../assets/images/post-5.jpg'
   alt: Stairs
+  caption: Looking up the lighthouse stairs from the ground floor
 isFeatured: true
 seo:
   image:

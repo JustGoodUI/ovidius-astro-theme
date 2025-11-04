@@ -5,6 +5,7 @@ publishDate: 'Oct 12 2025'
 featureImage:
   src: '../../assets/images/post-9.jpg'
   alt: Blue shapes
+  caption: Abstract blue shapes
 seo:
   image:
     src: '../../assets/images/post-9.jpg'

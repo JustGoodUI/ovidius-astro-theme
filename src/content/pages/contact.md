@@ -11,4 +11,4 @@ _Email:_
 Feel free to drop me an email at [example@example.com](mailto:example@example.com), and I'll do my best to respond as soon as possible.
 
 _Social Media:_
-Connect with me on social media as well. Find me on [Twitter](https://twitter.com) or [LinkedIn](https://www.linkedin.com/).
+Connect with me on social media as well. Find me on [X/Twitter](https://x.com) or [LinkedIn](https://www.linkedin.com/).
