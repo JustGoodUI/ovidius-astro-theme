@@ -54,7 +54,7 @@ You can update this file to customize:
 - Newsletter subscription — form settings suitable for Mailchimp, Formspree, ConvertKit, or other form-based providers. The form supports a custom action URL, configurable email and hidden fields, and an optional honeypot field for spam protection.
 - Pagination — posts per page for blog listings
 
-Images can be referenced either as imports from `src/assets` (for optimized Astro images) or as string paths from the `public` directory.
+Images can be referenced either as imports from `src/assets/` (for optimized Astro images) or as string paths from the `public/` directory.
 
 ### Images
 
