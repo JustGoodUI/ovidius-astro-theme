@@ -37,20 +37,18 @@ if (image?.src) {
         };
     }
 }
+
 const canonicalURL = new URL(Astro.request.url, Astro.site);
 
 /**
- * Enforce some standard canonical URL formatting across the site.
+ * Returns a canonical URL with the fragment removed.
+ * Query parameters and the URL structure are preserved because
+ * they may represent unique content.
  */
 function formatCanonicalURL(url: string | URL) {
-    const path = url.toString();
-    const hasQueryParams = path.includes('?');
-    // If there are query params, make sure the URL has no trailing slash
-    if (hasQueryParams) {
-        path.replace(/\/?$/, '');
-    }
-    // otherwise, canonical URL always has a trailing slash
-    return path.replace(/\/?$/, hasQueryParams ? '' : '/');
+    const canonical = new URL(url);
+    canonical.hash = '';
+    return canonical.toString();
 }
 ---
 

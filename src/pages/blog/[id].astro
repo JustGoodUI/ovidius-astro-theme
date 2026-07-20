@@ -27,10 +27,10 @@ const { Content } = await render(post);
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image ?? featureImage} pageType="article">
-    <main class="px-4 py-12 grow sm:px-8 sm:py-16">
-        <article class="max-w-6xl mx-auto mb-12 sm:mb-16">
-            <header class="max-w-3xl mx-auto mb-6 sm:mb-8">
-                <div class="mb-3 text-sm tracking-wider uppercase text-slate-500">
+    <main class="grow px-4 py-12 sm:px-8 sm:py-16">
+        <article class="mx-auto mb-12 max-w-6xl sm:mb-16">
+            <header class="mx-auto mb-6 max-w-3xl sm:mb-8">
+                <div class="mb-3 text-sm tracking-wider text-slate-500 uppercase">
                     {
                         isFeatured && (
                             <>
@@ -66,38 +66,38 @@ const { Content } = await render(post);
                     </figure>
                 )
             }
-            <div class="max-w-3xl mx-auto">
+            <div class="mx-auto max-w-3xl">
                 <div class="prose prose-slate sm:prose-lg max-w-none">
                     <Content />
                 </div>
-                <div class="flex flex-wrap mt-8 text-sm gap-x-3 gap-y-1 sm:mt-12 sm:text-base">
+                <div class="mt-8 flex flex-wrap gap-x-3 gap-y-1 text-sm sm:mt-12 sm:text-base">
                     <span class="font-semibold">Share:</span>
                     <a
-                        class="transition duration-300 text-primary hover:text-slate-700"
+                        class="text-primary transition duration-300 hover:text-slate-700"
                         href={`https://bsky.app/intent/compose?text=${encodeURIComponent(title + ' ' + href)}`}
                         target="_blank"
-                        rel="noopener noreferer"
+                        rel="noopener noreferrer"
                         aria-label="Share on Bluesky">Bluesky</a
                     >
                     <a
-                        class="transition duration-300 text-primary hover:text-slate-700"
-                        href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(href)}&text=${encodeURIComponent(title)}`}
+                        class="text-primary transition duration-300 hover:text-slate-700"
+                        href={`https://x.com/intent/tweet?url=${encodeURIComponent(href)}&text=${encodeURIComponent(title)}`}
                         target="_blank"
-                        rel="noopener noreferer"
+                        rel="noopener noreferrer"
                         aria-label="Share on X">X/Twitter</a
                     >
                     <a
-                        class="transition duration-300 text-primary hover:text-slate-700"
+                        class="text-primary transition duration-300 hover:text-slate-700"
                         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(href)}`}
                         target="_blank"
-                        rel="noopener noreferer"
+                        rel="noopener noreferrer"
                         aria-label="Share on Facebook">Facebook</a
                     >
                     <a
-                        class="transition duration-300 text-primary hover:text-slate-700"
+                        class="text-primary transition duration-300 hover:text-slate-700"
                         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(href)}&summary=${encodeURIComponent(title)}`}
                         target="_blank"
-                        rel="noopener noreferer"
+                        rel="noopener noreferrer"
                         aria-label="Share on LinkedIn">LinkedIn</a
                     >
                 </div>
@@ -105,7 +105,7 @@ const { Content } = await render(post);
         </article>
         {
             (prevPost || nextPost) && (
-                <div class="max-w-3xl mx-auto mb-12 sm:mb-16">
+                <div class="mx-auto mb-12 max-w-3xl sm:mb-16">
                     <h2 class="after:bg-primary mb-8 text-sm tracking-wider text-slate-900 uppercase after:mt-4 after:block after:h-px after:w-16 after:content-[''] sm:mb-12">
                         Read Next
                     </h2>
