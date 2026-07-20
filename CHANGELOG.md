@@ -7,6 +7,7 @@ All notable changes to the "Ovidius" theme will be documented in this file.
 - upgraded to Astro v7 and updated official integrations to compatible versions
 - **now requires Node.js 22.12 or newer** (added `engines.node` to `package.json`)
 - updated Tailwind CSS, Prettier, and Fontsource dependencies
+- added `astro check` (via `@astrojs/check`) as a `check` script and to the build step for type safety
 - simplified canonical URL handling in `BaseHead` (strips the fragment, preserves query params and structure)
 - fixed `rel="noopener noreferrer"` typo on post share links
 - updated X/Twitter share link to `x.com`
