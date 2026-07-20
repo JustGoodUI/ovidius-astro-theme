@@ -8,6 +8,10 @@ Ovidius is a single-author blog theme for Astro.js. Featuring a minimal, slick, 
 
 Clicking the button above ☝️ will create a new repo for you that looks exactly like this one, and sets that repo up immediately for deployment on Netlify.
 
+## Prerequisites
+
+This theme is built with **Astro v7**, which requires **Node.js 22.12 or newer**. Check your version with `node -v` before installing, and make sure your host/CI uses a compatible Node version.
+
 ## Theme Features:
 
 - ✅ Featured post support
@@ -21,7 +25,7 @@ Clicking the button above ☝️ will create a new repo for you that looks exact
 
 ## Template Integrations
 
-- @astrojs/tailwind - https://docs.astro.build/en/guides/integrations-guide/tailwind/
+- @tailwindcss/vite - https://tailwindcss.com/docs/installation/framework-guides/astro
 - @astrojs/sitemap - https://docs.astro.build/en/guides/integrations-guide/sitemap/
 - @astrojs/mdx - https://docs.astro.build/en/guides/markdown-content/
 - @astrojs/rss - https://docs.astro.build/en/guides/rss/

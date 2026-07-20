@@ -1,7 +1,7 @@
 {
     "name": "ovidius-astro-theme",
     "type": "module",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "engines": {
         "node": ">=22.12.0"
     },
