@@ -20,10 +20,12 @@ export async function getStaticPaths() {
     }));
 }
 
-const { href } = Astro.url;
 const { post, prevPost, nextPost } = Astro.props as { post: CollectionEntry<'blog'>; prevPost: CollectionEntry<'blog'>; nextPost: CollectionEntry<'blog'> };
 const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured, seo } = post.data;
 const { Content } = await render(post);
+
+// Use the configured `site` to generate an absolute URL
+const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <BaseLayout title={seo?.title ?? title} description={seo?.description ?? excerpt} image={seo?.image ?? featureImage} pageType="article">
@@ -74,28 +76,28 @@ const { Content } = await render(post);
                     <span class="font-semibold">Share:</span>
                     <a
                         class="text-primary transition duration-300 hover:text-slate-700"
-                        href={`https://bsky.app/intent/compose?text=${encodeURIComponent(title + ' ' + href)}`}
+                        href={`https://bsky.app/intent/compose?text=${encodeURIComponent(title + ' ' + shareUrl)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Share on Bluesky">Bluesky</a
                     >
                     <a
                         class="text-primary transition duration-300 hover:text-slate-700"
-                        href={`https://x.com/intent/tweet?url=${encodeURIComponent(href)}&text=${encodeURIComponent(title)}`}
+                        href={`https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Share on X">X/Twitter</a
                     >
                     <a
                         class="text-primary transition duration-300 hover:text-slate-700"
-                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(href)}`}
+                        href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Share on Facebook">Facebook</a
                     >
                     <a
                         class="text-primary transition duration-300 hover:text-slate-700"
-                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(href)}&summary=${encodeURIComponent(title)}`}
+                        href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&summary=${encodeURIComponent(title)}`}
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Share on LinkedIn">LinkedIn</a

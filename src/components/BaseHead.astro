@@ -38,18 +38,13 @@ if (image?.src) {
     }
 }
 
-const canonicalURL = new URL(Astro.request.url, Astro.site);
-
 /**
- * Returns a canonical URL with the fragment removed.
- * Query parameters and the URL structure are preserved because
- * they may represent unique content.
+ * Canonical URL uses the configured `site`.
+ * Query parameters are removed because the theme does not generate
+ * query-specific content and inbound parameters are typically for tracking.
+ * Trailing slashes follow the user's Astro configuration.
  */
-function formatCanonicalURL(url: string | URL) {
-    const canonical = new URL(url);
-    canonical.hash = '';
-    return canonical.toString();
-}
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!-- High Priority Global Metadata -->
@@ -67,12 +62,12 @@ function formatCanonicalURL(url: string | URL) {
 <link rel="alternate" type="application/rss+xml" href="/rss.xml" title="RSS" />
 
 <!-- Page Metadata -->
-<link rel="canonical" href={formatCanonicalURL(canonicalURL)} />
+<link rel="canonical" href={canonicalURL} />
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content={pageType} />
-<meta property="og:url" content={formatCanonicalURL(canonicalURL)} />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 {description && <meta property="og:description" content={description} />}
 {resolvedImage?.src && <meta property="og:image" content={resolvedImage.src} />}
@@ -80,7 +75,7 @@ function formatCanonicalURL(url: string | URL) {
 
 <!-- X/Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
-<meta name="twitter:url" content={formatCanonicalURL(canonicalURL)} />
+<meta name="twitter:url" content={canonicalURL} />
 <meta name="twitter:title" content={title} />
 {description && <meta name="twitter:description" content={description} />}
 {resolvedImage?.src && <meta name="twitter:image" content={resolvedImage.src} />}
