@@ -11,33 +11,24 @@ const { title, publishDate, updatedDate, featureImage } = post.data;
     <header class="grow">
         <div class="mb-2 text-sm tracking-wider uppercase text-slate-500">
             <FormattedDate date={publishDate} />
-            {
-                updatedDate && (
-                    <>
-                        {' '}
-                        <span>
-                            (Updated on <FormattedDate date={updatedDate} />)
-                        </span>
-                    </>
-                )
-            }
+            {updatedDate && (
+                <>
+                    {' '}
+                    <span>
+                        (Updated on <FormattedDate date={updatedDate} />)
+                    </span>
+                </>
+            )}
         </div>
         <h3 class="text-2xl font-bold text-slate-900">
             <a href={`/blog/${post.id}/`}>{title}</a>
         </h3>
     </header>
-    {
-        featureImage?.src && (
-            <figure class="shrink-0 sm:w-40">
-                <a href={`/blog/${post.id}/`}>
-                    <CustomImage
-                        {...featureImage}
-                        class="w-full rounded-md"
-                        widths={[160, 320, 480, 640]}
-                        sizes="(min-width: 640px) 160px, calc(100vw - 32px)"
-                    />
-                </a>
-            </figure>
-        )
-    }
+    {featureImage?.src && (
+        <figure class="shrink-0 sm:w-40">
+            <a href={`/blog/${post.id}/`}>
+                <CustomImage {...featureImage} class="w-full rounded-md" widths={[160, 320, 480, 640]} sizes="(min-width: 640px) 160px, calc(100vw - 32px)" />
+            </a>
+        </figure>
+    )}
 </article>

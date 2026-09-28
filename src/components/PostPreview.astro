@@ -10,49 +10,43 @@ const { title, publishDate, updatedDate, featureImage, excerpt, isFeatured } = p
 <article class="mb-12 post-card sm:mb-16">
     <header class="post-card-header">
         <div class="mb-2 text-sm tracking-wider uppercase text-slate-500">
-            {
-                isFeatured && (
-                    <>
-                        <span class="text-primary">Featured</span>
-                        {' / '}
-                    </>
-                )
-            }
+            {isFeatured && (
+                <>
+                    <span class="text-primary">Featured</span>
+                    {' / '}
+                </>
+            )}
             <FormattedDate date={publishDate} />
-            {
-                updatedDate && (
-                    <>
-                        {' '}
-                        <span>
-                            (Updated on <FormattedDate date={updatedDate} />)
-                        </span>
-                    </>
-                )
-            }
+            {updatedDate && (
+                <>
+                    {' '}
+                    <span>
+                        (Updated on <FormattedDate date={updatedDate} />)
+                    </span>
+                </>
+            )}
         </div>
-        <h2 class="text-3xl font-bold text-slate-900"><a href={`/blog/${post.id}/`}>{title}</a></h2>
+        <h2 class="text-3xl font-bold text-slate-900">
+            <a href={`/blog/${post.id}/`}>{title}</a>
+        </h2>
     </header>
-    {
-        featureImage?.src && (
-            <figure class="mt-6 mb-6 post-card-thumbnail xl:mt-7 xl:mb-0">
-                <a href={`/blog/${post.id}/`}>
-                    <CustomImage
-                        {...featureImage}
-                        class="w-full rounded-md"
-                        widths={[160, 320, 480, 640, 768, 960, 1200]}
-                        sizes="(min-width: 1280px) 160px, (min-width: 832px) 768px, calc(100vw - 32px)"
-                    />
-                </a>
-            </figure>
-        )
-    }
-    {
-        excerpt && (
-            <div class="mt-4 post-card-content">
-                <div class="prose prose-slate sm:prose-lg max-w-none">{excerpt}</div>
-            </div>
-        )
-    }
+    {featureImage?.src && (
+        <figure class="mt-6 mb-6 post-card-thumbnail xl:mt-7 xl:mb-0">
+            <a href={`/blog/${post.id}/`}>
+                <CustomImage
+                    {...featureImage}
+                    class="w-full rounded-md"
+                    widths={[160, 320, 480, 640, 768, 960, 1200]}
+                    sizes="(min-width: 1280px) 160px, (min-width: 832px) 768px, calc(100vw - 32px)"
+                />
+            </a>
+        </figure>
+    )}
+    {excerpt && (
+        <div class="mt-4 post-card-content">
+            <div class="prose prose-slate sm:prose-lg max-w-none">{excerpt}</div>
+        </div>
+    )}
 </article>
 
 <style>

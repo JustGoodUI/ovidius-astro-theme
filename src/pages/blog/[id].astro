@@ -33,41 +33,35 @@ const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
         <article class="mx-auto mb-12 max-w-6xl sm:mb-16">
             <header class="mx-auto mb-6 max-w-3xl sm:mb-8">
                 <div class="mb-3 text-sm tracking-wider text-slate-500 uppercase">
-                    {
-                        isFeatured && (
-                            <>
-                                <span class="text-primary">Featured</span>
-                                {' / '}
-                            </>
-                        )
-                    }
+                    {isFeatured && (
+                        <>
+                            <span class="text-primary">Featured</span>
+                            {' / '}
+                        </>
+                    )}
                     <FormattedDate date={publishDate} />
-                    {
-                        updatedDate && (
-                            <>
-                                {' '}
-                                <span>
-                                    (Updated on <FormattedDate date={updatedDate} />)
-                                </span>
-                            </>
-                        )
-                    }
+                    {updatedDate && (
+                        <>
+                            {' '}
+                            <span>
+                                (Updated on <FormattedDate date={updatedDate} />)
+                            </span>
+                        </>
+                    )}
                 </div>
                 <h1 class="text-3xl font-bold text-slate-900 sm:text-4xl md:text-5xl">{title}</h1>
             </header>
-            {
-                featureImage?.src && (
-                    <figure class="my-6 sm:my-8 lg:my-12">
-                        <CustomImage
-                            {...featureImage}
-                            class="w-full rounded-lg"
-                            widths={[480, 640, 768, 960, 1200, 1600]}
-                            sizes="(min-width: 1216px) 1152px, calc(100vw - 32px)"
-                        />
-                        {featureImage.caption && <figcaption class="mt-1.5 text-xs sm:text-sm">{featureImage.caption}</figcaption>}
-                    </figure>
-                )
-            }
+            {featureImage?.src && (
+                <figure class="my-6 sm:my-8 lg:my-12">
+                    <CustomImage
+                        {...featureImage}
+                        class="w-full rounded-lg"
+                        widths={[480, 640, 768, 960, 1200, 1600]}
+                        sizes="(min-width: 1216px) 1152px, calc(100vw - 32px)"
+                    />
+                    {featureImage.caption && <figcaption class="mt-1.5 text-xs sm:text-sm">{featureImage.caption}</figcaption>}
+                </figure>
+            )}
             <div class="mx-auto max-w-3xl">
                 <div class="prose prose-slate sm:prose-lg max-w-none">
                     <Content />
@@ -79,43 +73,49 @@ const shareUrl = new URL(Astro.url.pathname, Astro.site).href;
                         href={`https://bsky.app/intent/compose?text=${encodeURIComponent(title + ' ' + shareUrl)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Share on Bluesky">Bluesky</a
+                        aria-label="Share on Bluesky"
                     >
+                        Bluesky
+                    </a>
                     <a
                         class="text-primary transition duration-300 hover:text-slate-700"
                         href={`https://x.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(title)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Share on X">X/Twitter</a
+                        aria-label="Share on X"
                     >
+                        X/Twitter
+                    </a>
                     <a
                         class="text-primary transition duration-300 hover:text-slate-700"
                         href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Share on Facebook">Facebook</a
+                        aria-label="Share on Facebook"
                     >
+                        Facebook
+                    </a>
                     <a
                         class="text-primary transition duration-300 hover:text-slate-700"
                         href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}&summary=${encodeURIComponent(title)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        aria-label="Share on LinkedIn">LinkedIn</a
+                        aria-label="Share on LinkedIn"
                     >
+                        LinkedIn
+                    </a>
                 </div>
             </div>
         </article>
-        {
-            (prevPost || nextPost) && (
-                <div class="mx-auto mb-12 max-w-3xl sm:mb-16">
-                    <h2 class="after:bg-primary mb-8 text-sm tracking-wider text-slate-900 uppercase after:mt-4 after:block after:h-px after:w-16 after:content-[''] sm:mb-12">
-                        Read Next
-                    </h2>
-                    {nextPost && <ReadNextPostPreview post={nextPost} />}
-                    {prevPost && <ReadNextPostPreview post={prevPost} />}
-                </div>
-            )
-        }
+        {(prevPost || nextPost) && (
+            <div class="mx-auto mb-12 max-w-3xl sm:mb-16">
+                <h2 class="after:bg-primary mb-8 text-sm tracking-wider text-slate-900 uppercase after:mt-4 after:block after:h-px after:w-16 after:content-[''] sm:mb-12">
+                    Read Next
+                </h2>
+                {nextPost && <ReadNextPostPreview post={nextPost} />}
+                {prevPost && <ReadNextPostPreview post={prevPost} />}
+            </div>
+        )}
         <Subscribe class="mt-16 mb-12 sm:mt-24 sm:mb-16" />
     </main>
 </BaseLayout>

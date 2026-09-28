@@ -9,43 +9,39 @@ const { class: className } = Astro.props;
 ---
 
 <header class:list={['flex items-center justify-between gap-6 px-4 py-4 sm:px-8 sm:py-6', className]}>
-    {
-        siteConfig.logo?.src ? (
-            <a href="/">
-                <CustomImage class="max-h-12" {...siteConfig.logo} loading="eager" fetchpriority="high" />
-            </a>
-        ) : (
-            <a class="text-xl font-bold sm:text-2xl" href="/">
-                {siteConfig.title}
-            </a>
-        )
-    }
-    {
-        primaryNavLinks.length > 0 && (
-            <nav class="relative" aria-label="Primary navigation">
-                <button
-                    class="relative z-20 inline-flex items-center justify-center w-10 h-10 text-white transition-shadow duration-300 rounded-full cursor-pointer menu-toggle bg-primary hover:shadow-button"
-                    aria-label="Open Menu"
-                    aria-expanded="false"
-                    aria-controls="menu-items"
-                >
-                    <span class="relative w-1 h-1 bg-white rounded-full menu-toggle-icon" />
-                </button>
-                <ul id="menu-items" class="absolute z-10 px-8 pt-16 pb-10 border menu -top-3 -right-3 border-white/40 bg-white/75 sm:px-12 sm:pt-20 sm:pb-16">
-                    {primaryNavLinks.map((link) => (
-                        <li class="mb-1 border-b border-slate-200/70">
-                            <HeaderNavLink
-                                class="relative block py-1 pr-6 text-lg font-bold transition duration-300 text-slate-700 hover:text-slate-500 sm:text-xl"
-                                href={link.href}
-                            >
-                                {link.text}
-                            </HeaderNavLink>
-                        </li>
-                    ))}
-                </ul>
-            </nav>
-        )
-    }
+    {siteConfig.logo?.src ? (
+        <a href="/">
+            <CustomImage class="max-h-12" {...siteConfig.logo} loading="eager" fetchpriority="high" />
+        </a>
+    ) : (
+        <a class="text-xl font-bold sm:text-2xl" href="/">
+            {siteConfig.title}
+        </a>
+    )}
+    {primaryNavLinks.length > 0 && (
+        <nav class="relative" aria-label="Primary navigation">
+            <button
+                class="relative z-20 inline-flex items-center justify-center w-10 h-10 text-white transition-shadow duration-300 rounded-full cursor-pointer menu-toggle bg-primary hover:shadow-button"
+                aria-label="Open Menu"
+                aria-expanded="false"
+                aria-controls="menu-items"
+            >
+                <span class="relative w-1 h-1 bg-white rounded-full menu-toggle-icon" />
+            </button>
+            <ul id="menu-items" class="absolute z-10 px-8 pt-16 pb-10 border menu -top-3 -right-3 border-white/40 bg-white/75 sm:px-12 sm:pt-20 sm:pb-16">
+                {primaryNavLinks.map((link) => (
+                    <li class="mb-1 border-b border-slate-200/70">
+                        <HeaderNavLink
+                            class="relative block py-1 pr-6 text-lg font-bold transition duration-300 text-slate-700 hover:text-slate-500 sm:text-xl"
+                            href={link.href}
+                        >
+                            {link.text}
+                        </HeaderNavLink>
+                    </li>
+                ))}
+            </ul>
+        </nav>
+    )}
 </header>
 
 <style>

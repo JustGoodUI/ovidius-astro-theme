@@ -24,19 +24,17 @@ const { Content } = await render(page);
             <header class="max-w-3xl mx-auto mb-9">
                 <h1 class="text-4xl font-bold text-slate-900 sm:text-5xl">{title}</h1>
             </header>
-            {
-                featureImage?.src && (
-                    <figure class="mb-9">
-                        <CustomImage
-                            {...featureImage}
-                            class="w-full rounded-md"
-                            widths={[480, 640, 768, 960, 1200, 1600]}
-                            sizes="(min-width: 1216px) 1152px, calc(100vw - 32px)"
-                        />
-                        {featureImage.caption && <figcaption class="mt-1.5 text-xs">{featureImage.caption}</figcaption>}
-                    </figure>
-                )
-            }
+            {featureImage?.src && (
+                <figure class="mb-9">
+                    <CustomImage
+                        {...featureImage}
+                        class="w-full rounded-md"
+                        widths={[480, 640, 768, 960, 1200, 1600]}
+                        sizes="(min-width: 1216px) 1152px, calc(100vw - 32px)"
+                    />
+                    {featureImage.caption && <figcaption class="mt-1.5 text-xs">{featureImage.caption}</figcaption>}
+                </figure>
+            )}
             <div class="max-w-3xl mx-auto">
                 <div class="prose prose-slate sm:prose-lg max-w-none">
                     <Content />
