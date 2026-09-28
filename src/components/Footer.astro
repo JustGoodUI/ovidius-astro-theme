@@ -8,31 +8,31 @@ const currentYear = new Date().getFullYear();
 ---
 
 <footer class="px-4 py-8 sm:px-8 sm:py-12">
-    {
-        secondaryNavLinks.length > 0 && (
-            <nav class="mx-auto mb-6 flex w-full max-w-3xl flex-wrap justify-center gap-x-6 gap-y-1" aria-label="Footer navigation">
-                {secondaryNavLinks.map((link) => (
-                    <a class="text-slate-700 transition hover:text-slate-500" href={link.href}>
-                        {link.text}
-                    </a>
-                ))}
-            </nav>
-        )
-    }
-    {
-        socialLinks.length > 0 && (
-            <div class="mx-auto mb-6 flex w-full max-w-3xl flex-wrap justify-center gap-x-4 gap-y-3">
-                {socialLinks.map((link) => (
-                    <SocialLink {...link} class="hover:bg-primary hover:shadow-button bg-slate-50 text-slate-700 hover:text-white" />
-                ))}
-            </div>
-        )
-    }
+    {secondaryNavLinks.length > 0 && (
+        <nav class="mx-auto mb-6 flex w-full max-w-3xl flex-wrap justify-center gap-x-6 gap-y-1" aria-label="Footer navigation">
+            {secondaryNavLinks.map((link) => (
+                <a class="text-slate-700 transition hover:text-slate-500" href={link.href}>
+                    {link.text}
+                </a>
+            ))}
+        </nav>
+    )}
+    {socialLinks.length > 0 && (
+        <div class="mx-auto mb-6 flex w-full max-w-3xl flex-wrap justify-center gap-x-4 gap-y-3">
+            {socialLinks.map((link) => (
+                <SocialLink {...link} class="hover:bg-primary hover:shadow-button bg-slate-50 text-slate-700 hover:text-white" />
+            ))}
+        </div>
+    )}
     <p class="text-center text-xs tracking-wider text-slate-700 uppercase">
         &copy; {currentYear}{' '}
-        <a class="text-primary underline hover:no-underline" href="/">{siteConfig.title}</a>. Created with Astro.js & <a
-            class="text-primary underline hover:no-underline"
-            href="https://justgoodui.com/astro-themes/ovidius/">Ovidius theme</a
-        >.
+        <a class="text-primary underline hover:no-underline" href="/">
+            {siteConfig.title}
+        </a>
+        . Created with Astro.js &{' '}
+        <a class="text-primary underline hover:no-underline" href="https://justgoodui.com/astro-themes/ovidius/">
+            Ovidius theme
+        </a>
+        .
     </p>
 </footer>

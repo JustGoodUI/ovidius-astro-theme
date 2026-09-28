@@ -21,35 +21,35 @@ const blog = page.data;
     <main class="px-4 py-12 grow sm:px-8 sm:py-16">
         <h1 class="sr-only">Blog</h1>
         <div class="max-w-3xl mx-auto xl:max-w-6xl">
-            {blog.map((post) => <PostPreview post={post} />)}
+            {blog.map((post) => (
+                <PostPreview post={post} />
+            ))}
         </div>
         <nav aria-label="Pagination" class="max-w-3xl pt-12 mx-auto my-12 border-t border-slate-200 sm:my-16 sm:pt-16">
             <div class="relative px-12 text-center">
-                {
-                    page.url.prev && (
-                        <a
-                            class="absolute left-0 inline-flex items-center justify-center w-10 h-10 text-lg transition duration-300 -translate-y-1/2 rounded-full hover:bg-primary hover:shadow-button top-1/2 bg-slate-50 text-slate-700 hover:text-white"
-                            href={page.url.prev}
-                            rel="prefetch"
-                            aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`}
-                        >
-                            <Icon icon="arrow-left" class="w-5 h-5 fill-current" />
-                        </a>
-                    )
-                }
-                <span class="text-sm tracking-wider uppercase text-slate-500" aria-current="page">Page {page.currentPage} of {page.lastPage}</span>
-                {
-                    page.url.next && (
-                        <a
-                            class="absolute right-0 inline-flex items-center justify-center w-10 h-10 text-lg transition duration-300 -translate-y-1/2 rounded-full hover:bg-primary hover:shadow-button top-1/2 bg-slate-50 text-slate-700 hover:text-white"
-                            href={page.url.next}
-                            rel="prefetch"
-                            aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`}
-                        >
-                            <Icon icon="arrow-right" class="w-5 h-5 fill-current" />
-                        </a>
-                    )
-                }
+                {page.url.prev && (
+                    <a
+                        class="absolute left-0 inline-flex items-center justify-center w-10 h-10 text-lg transition duration-300 -translate-y-1/2 rounded-full hover:bg-primary hover:shadow-button top-1/2 bg-slate-50 text-slate-700 hover:text-white"
+                        href={page.url.prev}
+                        rel="prefetch"
+                        aria-label={`Go to page ${page.currentPage - 1} of ${page.lastPage}`}
+                    >
+                        <Icon icon="arrow-left" class="w-5 h-5 fill-current" />
+                    </a>
+                )}
+                <span class="text-sm tracking-wider uppercase text-slate-500" aria-current="page">
+                    Page {page.currentPage} of {page.lastPage}
+                </span>
+                {page.url.next && (
+                    <a
+                        class="absolute right-0 inline-flex items-center justify-center w-10 h-10 text-lg transition duration-300 -translate-y-1/2 rounded-full hover:bg-primary hover:shadow-button top-1/2 bg-slate-50 text-slate-700 hover:text-white"
+                        href={page.url.next}
+                        rel="prefetch"
+                        aria-label={`Go to page ${page.currentPage + 1} of ${page.lastPage}`}
+                    >
+                        <Icon icon="arrow-right" class="w-5 h-5 fill-current" />
+                    </a>
+                )}
             </div>
         </nav>
         <Subscribe class="my-12 sm:my-16" />

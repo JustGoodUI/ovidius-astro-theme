@@ -34,14 +34,14 @@ if (!subscribe?.enabled || !subscribe?.form?.action) {
             class="w-full px-5 py-2 bg-white border rounded-full h-11 border-slate-200 text-slate-700 placeholder:text-slate-500 focus:outline-hidden"
             aria-label="Email address"
         />
-        {subscribe.form.hiddenFields?.map((field) => <input type="hidden" name={field.name} value={field.value} />)}
-        {
-            subscribe.form.honeypotFieldName && (
-                <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                    <input type="text" name={subscribe.form.honeypotFieldName} tabindex="-1" autocomplete="off" />
-                </div>
-            )
-        }
+        {subscribe.form.hiddenFields?.map((field) => (
+            <input type="hidden" name={field.name} value={field.value} />
+        ))}
+        {subscribe.form.honeypotFieldName && (
+            <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                <input type="text" name={subscribe.form.honeypotFieldName} tabindex="-1" autocomplete="off" />
+            </div>
+        )}
         <button
             type="submit"
             class="bg-primary hover:shadow-button inline-flex w-full cursor-pointer items-center justify-center gap-1.5 rounded-full px-8 py-2.5 font-semibold text-white transition duration-300 sm:w-auto"
